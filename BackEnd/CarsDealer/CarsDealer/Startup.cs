@@ -1,5 +1,8 @@
 using CarsDealer.Common;
 using CarsDealer.Data;
+using CarsDealer.Infrastructure;
+using CarsDealer.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,9 +12,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CarsDealer
@@ -33,14 +38,48 @@ namespace CarsDealer
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            })
+            .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            var applicationSettingsConfiguration = Configuration.GetSection("ApplicationSettings");
+            services.Configure<ApplicationSettings>(applicationSettingsConfiguration);
+
+            var appSettings = applicationSettingsConfiguration.Get<ApplicationSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+
+                };
+            });
 
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
+
+            services.AddMvc();
 
              services.AddCors(options =>
              {
@@ -87,6 +126,8 @@ namespace CarsDealer
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            app.ApplyMigrations();
         }
     }
 }
