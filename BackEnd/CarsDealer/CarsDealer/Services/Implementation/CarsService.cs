@@ -1,5 +1,6 @@
 ﻿using CarsDealer.Data;
 using CarsDealer.DTOS;
+using CarsDealer.Enums;
 using CarsDealer.Models;
 using CarsDealer.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +24,8 @@ namespace CarsDealer.Services.Implementation
                 Description = model.Description,
                 Brand = model.Brand,
                 Color = model.Color,
-                Fuel = model.Fuel,
-                GearLever = model.GearLever,
+                Fuel = (Fuel)model.Fuel,
+                GearLever = (GearLever)model.GearLever,
                 ImageFileType = model.ImageFileType,
                 IsApproved = false,
                 IsDeleted = false,

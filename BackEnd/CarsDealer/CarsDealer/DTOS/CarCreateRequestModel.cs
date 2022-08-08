@@ -17,10 +17,10 @@ namespace CarsDealer.DTOS
         public string Description { get; set; }
 
         [Required]
-        public Fuel Fuel { get; set; }
+        public byte Fuel { get; set; }
 
         [Required]
-        public GearLever GearLever { get; set; }
+        public byte GearLever { get; set; }
 
         [Required]
         public decimal Price { get; set; }
