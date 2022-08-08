@@ -14,6 +14,19 @@ namespace CarsDealer.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder
+                .Entity<Car>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Cars)
+                .HasForeignKey(k => k.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+
+            base.OnModelCreating(builder);
+        }
+
         public DbSet<Car> Cars { get; set; }
     }
 }

@@ -2,20 +2,18 @@
 using System.ComponentModel.DataAnnotations;
 using static CarsDealer.Data.Validation.Car;
 
-namespace CarsDealer.Models
+namespace CarsDealer.DTOS
 {
-    public class Car
+    public class CarCreateRequestModel
     {
-        public int Id { get; set; }
-
         [Required]
         public string Model { get; set; }
 
         [Required]
-        [MaxLength(MaxDescriptionLength)]
         public string Brand { get; set; }
 
         [Required]
+        [MaxLength(MaxDescriptionLength)]
         public string Description { get; set; }
 
         [Required]
@@ -32,15 +30,10 @@ namespace CarsDealer.Models
 
         [Required]
         public string Color { get; set; }
-        public bool IsDeleted { get; set; }
-        public bool IsApproved { get; set; }
+
 
         [Required]
         public string ImageFileType { get; set; }
-
-        [Required]
         public string UserId { get; set; }
-        public User User { get; set; }
-
     }
 }

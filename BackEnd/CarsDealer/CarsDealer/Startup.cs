@@ -2,9 +2,12 @@ using CarsDealer.Common;
 using CarsDealer.Data;
 using CarsDealer.Infrastructure;
 using CarsDealer.Models;
+using CarsDealer.Services.Implementation;
+using CarsDealer.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -16,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -93,6 +97,10 @@ namespace CarsDealer
              });
 
             services.AddControllersWithViews();
+
+            services.AddTransient<ICarsService, CarsService>();
+            services.AddTransient<ClaimsPrincipal>(
+                s => s.GetService<IHttpContextAccessor>().HttpContext.User);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
