@@ -17,6 +17,13 @@ export class AuthService {
 
   register(data: any): Observable<any>{
     return this.http.post(this.registerPath, data);
+  }
 
+  saveToken(token: string){
+    localStorage.setItem('token', token);
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
   }
 }
