@@ -2,7 +2,7 @@
 {
     public enum GearLever : byte
     {
-        Manual = 1,
-        Automatic = 2
+        Manual = 0,
+        Automatic = 1
     }
 }
