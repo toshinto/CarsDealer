@@ -12,6 +12,8 @@ import { CarComponent } from './cars/car/car.component';
 import { CarService } from './services/car.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     RegisterComponent,
     CarComponent,
     NotFoundComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
