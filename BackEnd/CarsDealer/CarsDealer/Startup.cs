@@ -99,6 +99,7 @@ namespace CarsDealer
             services.AddControllersWithViews();
 
             services.AddTransient<ICarsService, CarsService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<ClaimsPrincipal>(
                 s => s.GetService<IHttpContextAccessor>().HttpContext.User);
         }

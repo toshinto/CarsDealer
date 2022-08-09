@@ -8,5 +8,9 @@ namespace CarsDealer.Infrastructure.Extensions
         public static string GetId(this ClaimsPrincipal user)
             => user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)
             ?.Value;
+
+        public static string GetUserName(this ClaimsPrincipal user)
+           => user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)
+           ?.Value;
     }
 }

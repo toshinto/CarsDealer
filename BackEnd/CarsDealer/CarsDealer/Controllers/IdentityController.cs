@@ -80,7 +80,8 @@ namespace CarsDealer.Controllers
 
             return new
             {
-                Token = encryptedToken
+                Token = encryptedToken,
+                UserName = model.UserName,
             };
 
         }

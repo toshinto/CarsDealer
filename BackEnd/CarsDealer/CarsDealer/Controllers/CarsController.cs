@@ -17,11 +17,13 @@ namespace CarsDealer.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly ICarsService carService;
+        private readonly IUserService userService;
 
-        public CarsController(ApplicationDbContext db, ICarsService carService)
+        public CarsController(ApplicationDbContext db, ICarsService carService, IUserService userService)
         {
             _db = db;
             this.carService = carService;
+            this.userService = userService;
         }
 
         [Authorize]
@@ -49,6 +51,25 @@ namespace CarsDealer.Controllers
 
             return await carService.CreateCar(model);
 
+        }
+
+        [Authorize]
+        [HttpGet("GetUserName")]
+        public UserRequestNameDto GetUserName()
+        {
+            string userName = this.User.GetUserName();
+
+            return new UserRequestNameDto { UserName = userName };
+        }
+
+        [Authorize]
+        [HttpGet("CheckForAdminRole")]
+        public UserAdminDto CheckIfUserIsAdmin()
+        {
+            var userId = this.User.GetId();
+            var isAdmin = this.userService.isUserInAdminRole(userId);
+
+            return new UserAdminDto { IsAdmin = isAdmin };
         }
 
     }
