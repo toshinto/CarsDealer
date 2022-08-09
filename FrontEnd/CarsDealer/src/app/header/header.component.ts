@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { CarService } from '../services/car.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit{
 
-  constructor() { }
+  constructor(private authService: AuthService, private carService: CarService) { 
+  }
 
   ngOnInit(): void {
   }
 
+  get isLogged(): boolean{
+    if(this.authService.getToken()){
+      return true;
+    }
+    return false;
+  }
+
+  logoutHandler(): void{
+    this.authService.removeToken();
+    localStorage.removeItem('username');
+  }
+
+  get currentUserName(){
+      return localStorage.getItem('username');
+  }
 }

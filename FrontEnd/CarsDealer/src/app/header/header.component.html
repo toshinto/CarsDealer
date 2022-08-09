@@ -3,47 +3,51 @@
       <div class="logo-wrap">
         <p class="logo"><span class="logo">Cars Dealer</span></p>
       </div>
-      <div class="mini-navbar">
+      <div class="mini-navbar" *ngIf="!isLogged">
         <ul>
           <li>
-            <a routerLink="/login">Login</a>
+            <a routerLink="/login" routerLinkActive="active-link" >Login</a>
           </li>
           <li>
-            <a routerLink="/register">Register</a>
+            <a routerLink="/register" routerLinkActive="active-link" >Register</a>
           </li>
-          <li>
-            <a routerLink="/register">Admin</a>
-          </li>
+       
 
         </ul>
       </div>
-      <div class="mini-navbar">
+      <div class="mini-navbar" *ngIf="isLogged">
         <ul>
           <li>
-            <a routerLink="/profile">Todor's profile</a>
+            <a routerLink="/profile">{{currentUserName}}'s profile</a>
           </li>
           <li>
-            <a href="#">Logout</a>
+            <a href="#" (click)="logoutHandler()">Logout</a>
           </li>
         </ul>
       </div>
     </div>
-    <nav>
+    <nav *ngIf="isLogged">
       <ul>
         <li>
-          <a routerLink="/home">Home</a>
+          <a routerLink="/home" routerLinkActive="active" >Home</a>
         </li>
         <li>
-          <a routerLink="/themes">Cars</a>
+          <a routerLink="/create" routerLinkActive="active" >Create car</a>
         </li>
         <li>
-          <a routerLink="/themes/new">MyCars</a>
+            <a routerLink="/allCars" routerLinkActive="active" >Cars</a>
+          </li>
+        <li>
+          <a routerLink="/myCars" routerLinkActive="active" >MyCars</a>
         </li>
         <li>
-            <a routerLink="/register">Notifications</a>
+            <a routerLink="/notifications" routerLinkActive="active" >Notifications</a>
         </li>
         <li>
-            <a routerLink="/register">Messages</a>
+            <a routerLink="/messages" routerLinkActive="active" >Messages</a>
+        </li>
+        <li>
+            <a routerLink="/admin" routerLinkActive="active">Admin</a>
         </li>
       </ul>
     </nav>
