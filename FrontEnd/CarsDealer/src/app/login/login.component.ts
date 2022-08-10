@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { CarService } from '../services/car.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private carService: CarService) {
     this.loginForm = this.fb.group({
       'username': ['', [Validators.required]],
       'password': ['', Validators.required]
@@ -25,6 +26,9 @@ export class LoginComponent implements OnInit {
       this.authService.saveToken(data['Token']);
       localStorage.setItem('username', data['UserName']);
       this.router.navigate(['/create']);
+      //.then(() => {
+     //  window.location.reload();
+      //});
     });
   }
 

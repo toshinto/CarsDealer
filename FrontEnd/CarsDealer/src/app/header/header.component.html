@@ -47,7 +47,7 @@
             <a routerLink="/messages" routerLinkActive="active" >Messages</a>
         </li>
         <li>
-            <a routerLink="/admin" routerLinkActive="active">Admin</a>
+            <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin">Admin</a>
         </li>
       </ul>
     </nav>

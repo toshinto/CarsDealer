@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CarService } from '../services/car.service';
 
@@ -9,12 +9,17 @@ import { CarService } from '../services/car.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit, OnDestroy{
 
   constructor(private authService: AuthService, private carService: CarService) { 
   }
+  subscription = new Subscription();
+  isAdmin: boolean;
 
   ngOnInit(): void {
+    this.subscription = this.carService.isAdmin().subscribe(data => {
+      this.isAdmin = data.IsAdmin as boolean;
+    })
   }
 
   get isLogged(): boolean{
@@ -32,4 +37,9 @@ export class HeaderComponent implements OnInit{
   get currentUserName(){
       return localStorage.getItem('username');
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
 }
