@@ -1,4 +1,8 @@
-﻿namespace CarsDealer.Infrastructure.Extensions
+﻿using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Linq;
+
+namespace CarsDealer.Infrastructure.Extensions
 {
     public static class ImageExtensionHelper
     {
