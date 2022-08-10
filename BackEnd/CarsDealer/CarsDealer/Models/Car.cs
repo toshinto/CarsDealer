@@ -34,8 +34,6 @@ namespace CarsDealer.Models
         public string Color { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsApproved { get; set; }
-
-        [Required]
         public string ImageFileType { get; set; }
 
         [Required]
