@@ -3,6 +3,7 @@ using CarsDealer.DTOS;
 using CarsDealer.Infrastructure.Extensions;
 using CarsDealer.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -72,5 +73,11 @@ namespace CarsDealer.Controllers
             return new UserAdminDto { IsAdmin = isAdmin };
         }
 
+        [Authorize]
+        [HttpPost("Test")]
+        public void Test([FromForm]  IFormFile file, string details)
+        {
+            ;
+        }
     }
 }
