@@ -14,6 +14,7 @@ namespace CarsDealer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class CarsController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
@@ -75,7 +76,7 @@ namespace CarsDealer.Controllers
 
         [Authorize]
         [HttpPost("Test")]
-        public void Test([FromForm]  IFormFile file, string details)
+        public void Test([FromForm] TestDto dto)
         {
             ;
         }
