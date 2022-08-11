@@ -11,7 +11,8 @@ import { CarService } from '../services/car.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy{
 
-  constructor(private authService: AuthService, private carService: CarService) { 
+  constructor(private authService: AuthService, private carService: CarService, private router: Router) { 
+   
   }
   subscription = new Subscription();
   isAdmin: boolean;
@@ -19,7 +20,13 @@ export class HeaderComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.subscription = this.carService.isAdmin().subscribe(data => {
       this.isAdmin = data.IsAdmin as boolean;
+
+      // let currentUrl = this.router.url;
+      // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      //   this.router.navigate([currentUrl]);
+      // })
     })
+   
   }
 
   get isLogged(): boolean{
@@ -32,6 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   logoutHandler(): void{
     this.authService.removeToken();
     localStorage.removeItem('username');
+    this.router.navigate(['/login']);
   }
 
   get currentUserName(){
