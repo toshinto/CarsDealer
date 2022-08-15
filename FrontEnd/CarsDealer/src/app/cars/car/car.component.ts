@@ -10,9 +10,9 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
+  public formData = new FormData();
   carForm: FormGroup;
   car: Car;
-  
   constructor(private fb: FormBuilder, private carService: CarService) {
     this.carForm = this.fb.group({
       'Brand': ['', Validators.required],
@@ -24,16 +24,23 @@ export class CarComponent implements OnInit {
       'Year': ['', Validators.required],
       'City': ['', Validators.required],
       'Color': ['', Validators.required],
-      'ImageFileType': ['', Validators.required]
     })
     
    }
+
+   uploadFiles(file: any) {
+    console.log('file', file)
+    for (let i = 0; i < file.length; i++) {
+      this.formData.append("file", file[i], file[i]['name']); 
+    }
+  }
 
   ngOnInit(): void {
   }
 
   createCar(){
-    this.carService.create(this.carForm.value).subscribe(res => {
+    this.formData.append('details', JSON.stringify(this.carForm.value));
+    this.carService.create(this.formData).subscribe(res => {
       console.log(res);
     })
   }
