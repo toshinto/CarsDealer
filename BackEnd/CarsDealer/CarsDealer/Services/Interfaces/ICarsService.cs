@@ -5,7 +5,7 @@ namespace CarsDealer.Services.Interfaces
 {
     public interface ICarsService
     {
-        Task<int> CreateCar(CarCreateRequestModel model);
+        Task<int> CreateCar(byte[] fileBytes, CarCreateRequestModel model);
         Task<CarsListDto[]> GetAllCars();
         Task<CarsListDto[]> GetMyCars(string userId);
     }

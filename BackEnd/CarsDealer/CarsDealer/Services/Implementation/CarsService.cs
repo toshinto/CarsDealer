@@ -4,6 +4,7 @@ using CarsDealer.Enums;
 using CarsDealer.Models;
 using CarsDealer.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,12 +13,14 @@ namespace CarsDealer.Services.Implementation
     public class CarsService : ICarsService
     {
         private readonly ApplicationDbContext _db;
+        private readonly IImageService _imageService;
 
-        public CarsService(ApplicationDbContext db)
+        public CarsService(ApplicationDbContext db, IImageService imageService)
         {
             _db = db;
+            _imageService = imageService;
         }
-        public async Task<int> CreateCar(CarCreateRequestModel model)
+        public async Task<int> CreateCar(byte[] fileBytes, CarCreateRequestModel model)
         {
             var car = new Car()
             {
@@ -38,31 +41,70 @@ namespace CarsDealer.Services.Implementation
             this._db.Add(car);
 
             await this._db.SaveChangesAsync();
+            _imageService.CreateImages(fileBytes, model.ImageFileType, car.Id);
 
             return car.Id;
         }
 
         public async Task<CarsListDto[]> GetAllCars()
         {
-            return await _db.Cars
+            var cars = _db.Cars
                 .Select(x => new CarsListDto
                 {
                     Id = x.Id,
-                    Brand = x.Brand
+                    Brand = x.Brand,
+                    Model = x.Model,
+                    Description = x.Description,
+                    Fuel = x.Fuel.ToString(),
+                    GearLever = x.GearLever.ToString(),
+                    Price = x.Price,
+                    Year = x.Year,
+                    ImageFileType = x.ImageFileType,
+                    
                 })
                 .ToArrayAsync();
+
+            foreach(var car in cars.Result)
+            {
+                var bytes = _imageService.GetImage(car.Id, car.ImageFileType);
+
+                var imageBase64String = Convert.ToBase64String(bytes);
+
+                car.ImageBase64 = imageBase64String;
+            }
+
+            return await cars;
         }
 
         public async Task<CarsListDto[]> GetMyCars(string userId)
         {
-            return await _db.Cars
-               .Where(x => x.UserId == userId)
-               .Select(x => new CarsListDto
-               {
-                   Id = x.Id,
-                   Brand = x.Brand
-               })
-               .ToArrayAsync();
+            var cars = _db.Cars
+                .Where(x => x.UserId == userId)
+                .Select(x => new CarsListDto
+                {
+                    Id = x.Id,
+                    Brand = x.Brand,
+                    Model = x.Model,
+                    Description = x.Description,
+                    Fuel = x.Fuel.ToString(),
+                    GearLever = x.GearLever.ToString(),
+                    Price = x.Price,
+                    Year = x.Year,
+                    ImageFileType = x.ImageFileType,
+
+                })
+                .ToArrayAsync();
+
+            foreach (var car in cars.Result)
+            {
+                var bytes = _imageService.GetImage(car.Id, car.ImageFileType);
+
+                var imageBase64String = Convert.ToBase64String(bytes);
+
+                car.ImageBase64 = imageBase64String;
+            }
+
+            return await cars;
         }
     }
 }
