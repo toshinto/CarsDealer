@@ -15,6 +15,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { MycarsComponent } from './mycars/mycars.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    MycarsComponent,
   ],
   imports: [
     BrowserModule,

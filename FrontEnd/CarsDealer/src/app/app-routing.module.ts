@@ -4,6 +4,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { CarComponent } from './cars/car/car.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { MycarsComponent } from './mycars/mycars.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -24,6 +25,12 @@ const routes: Routes = [
   },
   {
     path: 'create', component: CarComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'allCars', component: HomeComponent
+  },
+  {
+    path: 'myCars', component: MycarsComponent
   },
   {
     path: '**', component: NotFoundComponent

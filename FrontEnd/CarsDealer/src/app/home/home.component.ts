@@ -1,6 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { TitleStrategy } from '@angular/router';
 import { Car } from '../models/car';
 import { CarService } from '../services/car.service';
 

@@ -12,6 +12,7 @@ import { UserAdminDto } from 'src/DTOS/UserAdminDto';
 export class CarService {
   private carPath = environment.apiUrl + '/api/cars/create';
   private allCars = environment.apiUrl+  '/api/cars/GetAllCars'
+  private myCars = environment.apiUrl+ '/api/cars/GetMyCars'
   private isUserAdmin = environment.apiUrl + '/api/cars/CheckForAdminRole';
   protected currentUserName: string = '';
   constructor(private http: HttpClient) { }
@@ -27,6 +28,10 @@ export class CarService {
 
   getAllCars(): Observable<Array<Car>>{
     return this.http.get<Array<Car>>(this.allCars);
+  }
+
+  getMyCars(): Observable<Array<Car>>{
+    return this.http.get<Array<Car>>(this.myCars);
   }
 
 }

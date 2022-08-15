@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card" style="width: 18rem;" *ngFor="let car of cars">
+          <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{car.Model}}</h5>
+            <p class="card-text">{{car.Description}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
