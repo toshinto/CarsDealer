@@ -11,6 +11,7 @@ import { UserAdminDto } from 'src/DTOS/UserAdminDto';
 })
 export class CarService {
   private carPath = environment.apiUrl + '/api/cars/create';
+  private allCars = environment.apiUrl+  '/api/cars/GetAllCars'
   private isUserAdmin = environment.apiUrl + '/api/cars/CheckForAdminRole';
   protected currentUserName: string = '';
   constructor(private http: HttpClient) { }
@@ -22,6 +23,10 @@ export class CarService {
 
   isAdmin(): Observable<UserAdminDto>{
     return this.http.get<UserAdminDto>(this.isUserAdmin);
+  }
+
+  getAllCars(): Observable<Array<Car>>{
+    return this.http.get<Array<Car>>(this.allCars);
   }
 
 }

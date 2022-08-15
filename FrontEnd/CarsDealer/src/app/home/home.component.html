@@ -1,5 +1,14 @@
-<div class="form-group">
-    <label for="file">Choose File</label><br /> <input type="file" id="file" (change)="uploadFiles($any($event.target).files)">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card" style="width: 18rem;" *ngFor="let car of cars">
+        <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{car.Model}}</h5>
+          <p class="card-text">{{car.Description}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <button type="button" (click)="RequestUpload()">Ok</button>
+</div>

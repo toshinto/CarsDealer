@@ -10,5 +10,6 @@ export interface Car{
     City: number,
     Color: number,
     ImageFileType: string,
+    ImageBase64: string,
 
 }

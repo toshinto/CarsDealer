@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TitleStrategy } from '@angular/router';
+import { Car } from '../models/car';
+import { CarService } from '../services/car.service';
 
 
 @Component({
@@ -9,24 +11,13 @@ import { TitleStrategy } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private http: HttpClient) { }
+  cars: Array<Car>;
+  constructor(private http: HttpClient, private carService: CarService) { }
   ngOnInit() {
-  }
-  public formData = new FormData();
-  ReqJson: any = {};
-
-  uploadFiles(file: any) {
-    console.log('file', file)
-    for (let i = 0; i < file.length; i++) {
-      this.formData.append("file", file[i], file[i]['name']); 
-    }
-  }
-
-  RequestUpload() {
-    const details = {'name': 'Todor'};
-    this.formData.append('details', JSON.stringify(details));
-    return this.http.post('https://localhost:44375/api/cars/test', this.formData, {headers: {"Accept": "application/json"}}).subscribe();
+    this.carService.getAllCars().subscribe(cars =>{ 
+      this.cars = cars;
+      console.log(cars);
+    })
   }
 
 }
