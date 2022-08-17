@@ -85,18 +85,28 @@ namespace CarsDealer.Controllers
         }
 
         [Authorize]
-        [HttpGet("Test/{id}")]
-        public string Test(int id)
+        [HttpGet("CarDetails/{carId}")]
+        public CarDetailsDto CarDetails(int carId)
         {
-            var car = _db.Cars
-                .Where(x => x.Id == id)
-                .FirstOrDefault();
-
-            var bytes = imageService.GetImage(car.Id, car.ImageFileType);
-
-            var imageBase64String = Convert.ToBase64String(bytes);
-
-            return imageBase64String;
+            return carService.GetCarDetails(carId);
         }
+
+        [Authorize]
+        [HttpDelete("DeleteCar/{carId}")]
+        public bool DeleteCar(int carId)
+        {
+            var userId = this.User.GetId();
+            return carService.DeleteCar(carId, userId);
+        }
+
+        [Authorize]
+        [HttpPost("UpdateCar")]
+        public bool UpdateCar(CarUpdateRequestModel model)
+        {
+            var userId = this.User.GetId();
+
+            return carService.UpdateCar(model, userId);
+        }
+
     }
 }

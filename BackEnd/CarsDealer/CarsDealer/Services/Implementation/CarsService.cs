@@ -3,6 +3,7 @@ using CarsDealer.DTOS;
 using CarsDealer.Enums;
 using CarsDealer.Models;
 using CarsDealer.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -46,9 +47,28 @@ namespace CarsDealer.Services.Implementation
             return car.Id;
         }
 
+        public bool DeleteCar(int carId, string userId)
+        {
+            var car = _db.Cars
+                .Where(x => x.Id == carId)
+                .FirstOrDefault();
+
+            if(car.UserId != userId)
+            {
+                return false;
+            }
+
+            car.IsDeleted = true;
+
+            _db.SaveChanges();
+
+            return true;
+        }
+
         public async Task<CarsListDto[]> GetAllCars()
         {
             var cars = _db.Cars
+                .Where(x => x.IsDeleted == false)
                 .Select(x => new CarsListDto
                 {
                     Id = x.Id,
@@ -76,10 +96,43 @@ namespace CarsDealer.Services.Implementation
             return await cars;
         }
 
+        public CarDetailsDto GetCarDetails(int carId)
+        {
+            var car = _db.Cars
+                .Where(x => x.Id == carId)
+                .Select(y => new CarDetailsDto
+                {
+                    Id = y.Id,
+                    Brand = y.Brand,
+                    Model = y.Model,
+                    Description = y.Description,
+                    Fuel = y.Fuel.ToString(),
+                    GearLever = y.GearLever.ToString(),
+                    Price = y.Price,
+                    Year = y.Year,
+                    ImageFileType = y.ImageFileType,
+                    Color = y.Color,
+                })
+                .FirstOrDefault();
+
+            if(car == null)
+            {
+                return null;
+            }
+
+            var bytes = _imageService.GetImage(car.Id, car.ImageFileType);
+            var imageBase64String = Convert.ToBase64String(bytes);
+
+            car.ImageBase64 = imageBase64String;
+
+            return  car;
+
+        }
+
         public async Task<CarsListDto[]> GetMyCars(string userId)
         {
             var cars = _db.Cars
-                .Where(x => x.UserId == userId)
+                .Where(x => x.UserId == userId && x.IsDeleted == false)
                 .Select(x => new CarsListDto
                 {
                     Id = x.Id,
@@ -105,6 +158,37 @@ namespace CarsDealer.Services.Implementation
             }
 
             return await cars;
+        }
+
+        public bool UpdateCar(CarUpdateRequestModel model, string userId)
+        {
+            var car = _db.Cars
+                .Where(x => x.Id == model.Id)
+                .FirstOrDefault();
+
+            if(car == null)
+            {
+                return false;
+            }
+
+            if(car.UserId != userId)
+            {
+                return false;
+            }
+
+            car.Brand = model.Brand;
+            car.Model = model.Model;
+            car.Color = model.Color;
+            car.Fuel = (Fuel)model.Fuel;
+            car.GearLever = (GearLever)model.GearLever;
+            car.Price = model.Price;
+            car.Year = model.Year;
+            car.Description = model.Description;
+
+            _db.SaveChanges();
+
+            return true;
+
         }
     }
 }
