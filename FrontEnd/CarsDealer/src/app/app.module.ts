@@ -16,6 +16,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { MycarsComponent } from './mycars/mycars.component';
+import { CarDetailsComponent } from './car-details/car-details.component';
+import { CarEditComponent } from './car-edit/car-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MycarsComponent } from './mycars/mycars.component';
     FooterComponent,
     HomeComponent,
     MycarsComponent,
+    CarDetailsComponent,
+    CarEditComponent,
   ],
   imports: [
     BrowserModule,
