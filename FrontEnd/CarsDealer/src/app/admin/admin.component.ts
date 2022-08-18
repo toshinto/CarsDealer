@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
   }
   
   fetchCars(){
-    this.carService.getMyCars().subscribe(cars =>{ 
+    this.carService.getAdminCars().subscribe(cars =>{ 
       this.cars = cars;
     })
   }
@@ -31,7 +31,13 @@ export class AdminComponent implements OnInit {
   
   Approve(id: number){
     this.carService.approveCar(id).subscribe(data => {
-      this.isApproved = true;
+      this.fetchCars();
+    });
+  }
+
+  Delete(id: number){
+    this.carService.deleteCarByAdmin(id).subscribe(res => {
+      this.fetchCars();
     });
   }
 

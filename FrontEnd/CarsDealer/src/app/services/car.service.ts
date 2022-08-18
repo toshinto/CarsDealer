@@ -16,6 +16,7 @@ export class CarService {
   private myCars = environment.apiUrl+ '/api/cars/GetMyCars'
   private carDetails = environment.apiUrl+ '/api/cars/CarDetails'
   private deleteCarUrl = environment.apiUrl+ '/api/cars/DeleteCar';
+  private deleteCarByAdminUrl = environment.apiUrl+ '/api/cars/DeleteCarByAdmin';
   private updateCar = environment.apiUrl + '/api/cars/UpdateCar';
   private isUserAdmin = environment.apiUrl + '/api/cars/CheckForAdminRole';
   private admin = environment.apiUrl + '/api/cars/AdminCars';
@@ -56,6 +57,10 @@ export class CarService {
 
   deleteCar(id: number){
     return this.http.delete(this.deleteCarUrl + '/' + id);
+  }
+
+  deleteCarByAdmin(id: number){
+    return this.http.delete(this.deleteCarByAdminUrl + '/' + id);
   }
 
   editCar(data: any){

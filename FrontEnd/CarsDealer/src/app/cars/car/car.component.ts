@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TitleStrategy } from '@angular/router';
+import { Router, RouterLink, TitleStrategy } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 
@@ -13,7 +13,7 @@ export class CarComponent implements OnInit {
   public formData = new FormData();
   carForm: FormGroup;
   car: Car;
-  constructor(private fb: FormBuilder, private carService: CarService) {
+  constructor(private fb: FormBuilder, private carService: CarService, private router: Router) {
     this.carForm = this.fb.group({
       'Brand': ['', Validators.required],
       'Model': ['', Validators.required],
@@ -42,6 +42,7 @@ export class CarComponent implements OnInit {
     this.formData.append('details', JSON.stringify(this.carForm.value));
     this.carService.create(this.formData).subscribe(res => {
       console.log(res);
+      this.router.navigate(['allCars']);
     })
   }
 
