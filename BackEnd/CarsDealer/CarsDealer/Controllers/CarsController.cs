@@ -137,5 +137,12 @@ namespace CarsDealer.Controllers
         {
             return carService.GetCarUpdateDetails(carId);
         }
+
+        [Authorize]
+        [HttpDelete("DeleteCarByAdmin/{carId}")]
+        public void DeleteCarByAdmin(int carId)
+        {
+            carService.DeleteCarByAdmin(carId);
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace CarsDealer.Services.Interfaces
         ApproveDisapproveDto DisapproveCar(int carId);
         Task<AdminCarListDto[]> AdminCars();
         CarUpdateDetailsDto GetCarUpdateDetails(int carId);
+        void DeleteCarByAdmin(int carId);
 
     }
 }

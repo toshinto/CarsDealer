@@ -25,6 +25,7 @@ namespace CarsDealer.Services.Implementation
         public async Task<AdminCarListDto[]> AdminCars()
         {
             var adminCars = _db.Cars
+                .Where(x => x.IsApproved == false && x.IsDeleted == false)
                 .Select(x => new AdminCarListDto
                 {
                     Id = x.Id,
@@ -271,6 +272,20 @@ namespace CarsDealer.Services.Implementation
 
             return true;
 
+        }
+
+        public void DeleteCarByAdmin(int carId)
+        {
+            var car = _db.Cars
+                .Where(x => x.Id == carId)
+                .FirstOrDefault();
+
+            if(car != null)
+            {
+                car.IsDeleted = true;
+            }
+
+            _db.SaveChanges();
         }
     }
 }
