@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Car } from '../models/car';
 import { map, switchMap } from 'rxjs/operators';
 import { UserAdminDto } from 'src/DTOS/UserAdminDto';
+import { ApproveDisapprove } from 'src/DTOS/ApproveDisapproveDto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class CarService {
   private deleteCarUrl = environment.apiUrl+ '/api/cars/DeleteCar';
   private updateCar = environment.apiUrl + '/api/cars/UpdateCar';
   private isUserAdmin = environment.apiUrl + '/api/cars/CheckForAdminRole';
+  private admin = environment.apiUrl + '/api/cars/AdminCars';
+  private approveCarUrl = environment.apiUrl + '/api/cars/ApproveCar';
+  private disApproveCarUrl = environment.apiUrl + '/api/cars/DisApproveCar';
+  private carUpdateDetailsUrl = environment.apiUrl + '/api/cars/CarUpdateDetails';
   protected currentUserName: string = '';
   constructor(private http: HttpClient) { }
   isUserAdminA: boolean;
@@ -37,8 +42,16 @@ export class CarService {
     return this.http.get<Array<Car>>(this.myCars);
   }
 
+  getAdminCars(): Observable<Array<Car>>{
+    return this.http.get<Array<Car>>(this.admin);
+  }
+
   getCar(id: number): Observable<Car>{
     return this.http.get<Car>(this.carDetails + '/' + id);
+  }
+
+  getCarUpdateDetails(id: number): Observable<Car>{
+    return this.http.get<Car>(this.carUpdateDetailsUrl + '/' + id);
   }
 
   deleteCar(id: number){
@@ -47,6 +60,14 @@ export class CarService {
 
   editCar(data: any){
     return this.http.post(this.updateCar, data);
+  }
+
+  approveCar(id: number): Observable<ApproveDisapprove>{
+    return this.http.post(this.approveCarUrl + '/' + id, {});
+  }
+
+  disApproveCar(id: number): Observable<ApproveDisapprove>{
+    return this.http.post(this.disApproveCarUrl + '/' + id, {});
   }
 
 }

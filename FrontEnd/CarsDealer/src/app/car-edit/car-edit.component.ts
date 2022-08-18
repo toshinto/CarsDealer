@@ -32,7 +32,7 @@ export class CarEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.carId = params['id'];
-      this.carService.getCar(this.carId).subscribe(res => {
+      this.carService.getCarUpdateDetails(this.carId).subscribe(res => {
         this.car = res;
         this.carForm = this.fb.group({
           'Id': [this.car.Id],

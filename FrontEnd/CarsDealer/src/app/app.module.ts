@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { MycarsComponent } from './mycars/mycars.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CarEditComponent } from './car-edit/car-edit.component';
     MycarsComponent,
     CarDetailsComponent,
     CarEditComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

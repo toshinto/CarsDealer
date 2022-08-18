@@ -12,3 +12,5 @@
     </div>
   </div>
 </div>
+<button class="btn btn-success" disable *ngIf="isApproved" (click)="Disapprove()">Approved</button>
+<button class="btn btn-danger" disable *ngIf="!isApproved" (click)="Approve()">DisApproved</button>
