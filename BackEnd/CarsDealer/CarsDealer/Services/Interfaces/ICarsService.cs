@@ -12,5 +12,10 @@ namespace CarsDealer.Services.Interfaces
         CarDetailsDto GetCarDetails(int carId);
         bool DeleteCar(int carId, string userId);
         bool UpdateCar(CarUpdateRequestModel model, string userId);
+        ApproveDisapproveDto ApproveCar(int carId);
+        ApproveDisapproveDto DisapproveCar(int carId);
+        Task<AdminCarListDto[]> AdminCars();
+        CarUpdateDetailsDto GetCarUpdateDetails(int carId);
+
     }
 }

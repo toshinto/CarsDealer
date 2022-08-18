@@ -108,5 +108,34 @@ namespace CarsDealer.Controllers
             return carService.UpdateCar(model, userId);
         }
 
+        [Authorize]
+        [HttpPost("ApproveCar/{carId}")]
+        public ApproveDisapproveDto ApproveCar(int carId)
+        {
+           return carService.ApproveCar(carId);
+        }
+
+
+        [Authorize]
+        [HttpPost("DisApproveCar/{carId}")]
+        public ApproveDisapproveDto DisApproveCar(int carId)
+        {
+            return carService.DisapproveCar(carId);
+        }
+
+        [Authorize]
+        [HttpGet("AdminCars")]
+        public Task<AdminCarListDto[]> AdminCars()
+        {
+            return carService.AdminCars();
+        }
+
+
+        [Authorize]
+        [HttpGet("CarUpdateDetails/{carId}")]
+        public CarUpdateDetailsDto CarUpdateDetails(int carId)
+        {
+            return carService.GetCarUpdateDetails(carId);
+        }
     }
 }

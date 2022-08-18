@@ -21,6 +21,59 @@ namespace CarsDealer.Services.Implementation
             _db = db;
             _imageService = imageService;
         }
+
+        public async Task<AdminCarListDto[]> AdminCars()
+        {
+            var adminCars = _db.Cars
+                .Select(x => new AdminCarListDto
+                {
+                    Id = x.Id,
+                    Brand = x.Brand,
+                    Model = x.Model,
+                    ImageFileType = x.ImageFileType,
+
+                })
+                .ToArrayAsync();
+
+            foreach (var car in adminCars.Result)
+            {
+                var bytes = _imageService.GetImage(car.Id, car.ImageFileType);
+
+                var imageBase64String = Convert.ToBase64String(bytes);
+
+                car.ImageBase64 = imageBase64String;
+            }
+
+            return await adminCars;
+        }
+
+        public ApproveDisapproveDto ApproveCar(int carId)
+        {
+            var car = _db.Cars
+                .Where(x => x.Id == carId)
+                .FirstOrDefault();
+
+            car.IsApproved = true;
+
+            _db.SaveChanges();
+
+            return new ApproveDisapproveDto { State = true };
+        }
+
+        public ApproveDisapproveDto DisapproveCar(int carId)
+        {
+            var car = _db.Cars
+                .Where(x => x.Id == carId)
+                .FirstOrDefault();
+
+            car.IsApproved = false;
+
+            _db.SaveChanges();
+
+            return new ApproveDisapproveDto { State = false };
+
+        }
+
         public async Task<int> CreateCar(byte[] fileBytes, CarCreateRequestModel model)
         {
             var car = new Car()
@@ -64,6 +117,8 @@ namespace CarsDealer.Services.Implementation
 
             return true;
         }
+
+  
 
         public async Task<CarsListDto[]> GetAllCars()
         {
@@ -127,6 +182,33 @@ namespace CarsDealer.Services.Implementation
 
             return  car;
 
+        }
+
+        public CarUpdateDetailsDto GetCarUpdateDetails(int carId)
+        {
+            var car = _db.Cars
+               .Where(x => x.Id == carId)
+               .Select(y => new CarUpdateDetailsDto
+               {
+                   Id = y.Id,
+                   Brand = y.Brand,
+                   Model = y.Model,
+                   Description = y.Description,
+                   Fuel = y.Fuel,
+                   GearLever = y.GearLever,
+                   Price = y.Price,
+                   Year = y.Year,
+                   ImageFileType = y.ImageFileType,
+                   Color = y.Color,
+               })
+               .FirstOrDefault();
+
+            if (car == null)
+            {
+                return null;
+            }
+
+            return car;
         }
 
         public async Task<CarsListDto[]> GetMyCars(string userId)
