@@ -4,14 +4,16 @@ using CarsDealer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CarsDealer.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220820094304_change name of Notificatons to Offers")]
+    partial class changenameofNotificatonstoOffers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,31 +77,6 @@ namespace CarsDealer.Data.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("CarsDealer.Models.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Notifications");
-                });
-
             modelBuilder.Entity("CarsDealer.Models.Offer", b =>
                 {
                     b.Property<int>("Id")
@@ -115,9 +92,6 @@ namespace CarsDealer.Data.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -345,16 +319,6 @@ namespace CarsDealer.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CarsDealer.Models.Notification", b =>
-                {
-                    b.HasOne("CarsDealer.Models.User", "User")
-                        .WithMany("Notifications")
-                        .HasForeignKey("UserId")
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("CarsDealer.Models.Offer", b =>
                 {
                     b.HasOne("CarsDealer.Models.Car", "Car")
@@ -436,8 +400,6 @@ namespace CarsDealer.Data.Migrations
             modelBuilder.Entity("CarsDealer.Models.User", b =>
                 {
                     b.Navigation("Cars");
-
-                    b.Navigation("Notifications");
 
                     b.Navigation("ReceiverOffers");
 

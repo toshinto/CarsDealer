@@ -1,20 +1,21 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CarsDealer.Models
 {
     public class Notification
     {
         public int Id { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
+        [Required]
         public string Message { get; set; }
-        public decimal Price { get; set; }
-        public string SenderId { get; set; }
-        public string ReceiverId { get; set; }
-        public int CarId { get; set; }
-        public bool IsDeleted { get; set; }
+
+        [Required]
         public DateTime CreatedOn { get; set; }
 
-        public virtual User Sender { get; set; }
-        public virtual User Receiver { get; set; }
-        public virtual Car Car { get; set; }
+        public User User { get; set; }
     }
 }

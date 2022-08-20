@@ -23,22 +23,31 @@ namespace CarsDealer.Data
                 .HasForeignKey(k => k.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
-            builder.Entity<Notification>(entity =>
+            builder.Entity<Offer>(entity =>
             {
                 entity.HasOne(d => d.Sender)
-                      .WithMany(p => p.SenderNotifications)
+                      .WithMany(p => p.SenderOffers)
                       .HasForeignKey(k => k.SenderId)
                       .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.Receiver)
-                      .WithMany(p => p.ReceiverNotifications)
+                      .WithMany(p => p.ReceiverOffers)
                       .HasForeignKey(k => k.ReceiverId)
                       .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.Car)
-                      .WithMany(p => p.Notifications)
+                      .WithMany(p => p.Offers)
                       .HasForeignKey(k => k.CarId)
                       .OnDelete(DeleteBehavior.ClientSetNull);
+            });
+
+            builder.Entity<Notification>(entity =>
+            {
+                entity.HasOne(d => d.User)
+                      .WithMany(p => p.Notifications)
+                      .HasForeignKey(k => k.UserId)
+                      .OnDelete(DeleteBehavior.ClientSetNull);
+      
             });
 
 
@@ -46,6 +55,7 @@ namespace CarsDealer.Data
         }
 
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Offer> Offers { get; set; }
         public DbSet<Notification> Notifications { get; set; }
     }
 }

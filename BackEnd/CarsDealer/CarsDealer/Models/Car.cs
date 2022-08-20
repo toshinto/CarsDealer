@@ -41,7 +41,7 @@ namespace CarsDealer.Models
         public string UserId { get; set; }
         public User User { get; set; }
 
-        public IEnumerable<Notification> Notifications { get; } = new HashSet<Notification>();
+        public IEnumerable<Offer> Offers { get; } = new HashSet<Offer>();
 
     }
 }

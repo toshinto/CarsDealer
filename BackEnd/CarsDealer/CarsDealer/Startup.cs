@@ -101,6 +101,7 @@ namespace CarsDealer
             services.AddTransient<ICarsService, CarsService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IOfferService, OfficeService>();
             services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<ClaimsPrincipal>(
                 s => s.GetService<IHttpContextAccessor>().HttpContext.User);

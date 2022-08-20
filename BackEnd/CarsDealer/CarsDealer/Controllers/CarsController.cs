@@ -23,14 +23,16 @@ namespace CarsDealer.Controllers
         private readonly ICarsService carService;
         private readonly IUserService userService;
         private readonly IImageService imageService;
+        private readonly IOfferService offerService;
         private readonly INotificationService notificationService;
 
-        public CarsController(ApplicationDbContext db, ICarsService carService, IUserService userService, IImageService imageService, INotificationService notificationService)
+        public CarsController(ApplicationDbContext db, ICarsService carService, IUserService userService, IImageService imageService, IOfferService offerService, INotificationService notificationService)
         {
             _db = db;
             this.carService = carService;
             this.userService = userService;
             this.imageService = imageService;
+            this.offerService = offerService;
             this.notificationService = notificationService;
         }
 
@@ -155,24 +157,31 @@ namespace CarsDealer.Controllers
             carService.SendOffer(dto, userId);
         }
 
+        [HttpGet("GetMyOffers")]
+        public OfferListDto[] GetMyOffers()
+        {
+            var userId = this.User.GetId();
+
+            return offerService.GetOffers(userId);
+        }
+
+        [HttpPost("AcceptOffer/{offerId}")]
+        public void AcceptOffer(int offerId)
+        {
+            offerService.AcceptOffer(offerId);
+        }
+
+        [HttpPost("DeclineOffer/{offerId}")]
+        public void DeclineOffer(int offerId)
+        {
+            offerService.DeclineOffer(offerId);
+        }
+
         [HttpGet("GetMyNotifications")]
         public NotificationListDto[] GetMyNotifications()
         {
             var userId = this.User.GetId();
-
-            return notificationService.GetNotifications(userId);
-        }
-
-        [HttpPost("AcceptOffer/{notificationId}")]
-        public void AcceptOffer(int notificationId)
-        {
-            notificationService.AcceptOffer(notificationId);
-        }
-
-        [HttpPost("DeclineOffer/{notificationId}")]
-        public void DeclineOffer(int notificationId)
-        {
-            notificationService.DeclineOffer(notificationId);
+            return notificationService.GetMyNotifications(userId);
         }
     }
 }
