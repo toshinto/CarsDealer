@@ -19,6 +19,8 @@ import { MycarsComponent } from './mycars/mycars.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import { AdminComponent } from './admin/admin.component';
+import { NotificationComponent } from './notification/notification.component';
+import { OffersComponent } from './offers/offers.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { AdminComponent } from './admin/admin.component';
     CarDetailsComponent,
     CarEditComponent,
     AdminComponent,
+    NotificationComponent,
+    OffersComponent,
   ],
   imports: [
     BrowserModule,

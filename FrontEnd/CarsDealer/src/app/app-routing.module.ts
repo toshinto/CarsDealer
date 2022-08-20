@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MycarsComponent } from './mycars/mycars.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NotificationComponent } from './notification/notification.component';
+import { OffersComponent } from './offers/offers.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
@@ -43,6 +45,12 @@ const routes: Routes = [
   },
   {
     path: 'cars/:id/edit', component: CarEditComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'notifications', component: NotificationComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'offers', component: OffersComponent, canActivate: [AuthGuardService]
   },
   {
     path: '**', component: NotFoundComponent
