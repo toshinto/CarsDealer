@@ -9,6 +9,6 @@ namespace CarsDealer.Services.Interfaces
         void SendNotification(string senderId, string receiverId, Car car, decimal price);
         void AcceptOffer(int id);
         void DeclineOffer(int id);
-        GetNotificationDto[] GetNotification(string userId);
+        NotificationListDto[] GetNotifications(string userId);
     }
 }

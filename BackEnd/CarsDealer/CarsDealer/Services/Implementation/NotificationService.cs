@@ -75,11 +75,11 @@ namespace CarsDealer.Services.Implementation
             _db.SaveChanges();
         }
 
-        public GetNotificationDto[] GetNotification(string userId)
+        public NotificationListDto[] GetNotifications(string userId)
         {
             var notifications = _db.Notifications
-                .Where(x => x.ReceiverId == userId)
-                .Select(x => new GetNotificationDto()
+                .Where(x => x.ReceiverId == userId && x.IsDeleted == false)
+                .Select(x => new NotificationListDto()
                 {
                     Id = x.Id,
                     Message = x.Message,

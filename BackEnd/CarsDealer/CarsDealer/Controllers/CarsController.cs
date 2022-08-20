@@ -156,11 +156,11 @@ namespace CarsDealer.Controllers
         }
 
         [HttpGet("GetMyNotifications")]
-        public GetNotificationDto[] GetMyNotifications()
+        public NotificationListDto[] GetMyNotifications()
         {
             var userId = this.User.GetId();
 
-            return notificationService.GetNotification(userId);
+            return notificationService.GetNotifications(userId);
         }
 
         [HttpPost("AcceptOffer/{notificationId}")]
