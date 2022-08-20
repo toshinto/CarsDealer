@@ -1,11 +1,20 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6">
-            <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+     <ng-container *ngIf="car">
+        <div class="row">
+            <div class="col-lg-6">
+                <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+            </div>
+            <div class="col-lg-6">
+                <h3>Brand: {{car.Brand}}</h3>
+                <h2>Model: {{car.Model}}</h2>
+            </div>
         </div>
-        <div class="col-lg-6">
-            <h3>Brand: {{car.Brand}}</h3>
-            <h2>Model: {{car.Model}}</h2>
-        </div>
-    </div>
+        <form [formGroup]="offerForm">
+            <div>
+                <label for="price">Price</label>
+                <input type="number" class="form-control" formControlName="Price">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="makeOffer()">Make offer</button>
+        </form>
+     </ng-container>
 </div>

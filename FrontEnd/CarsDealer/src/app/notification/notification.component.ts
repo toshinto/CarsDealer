@@ -21,16 +21,5 @@ export class NotificationComponent implements OnInit {
     })
   }
 
-  accept(id: number){
-    this.carService.accept(id).subscribe(res => {
-      this.fetchNotifications();
-    })
-  }
-
-  decline(id: number){
-    this.carService.decline(id).subscribe(res => {
-      this.fetchNotifications();
-    })
-  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationListDto } from 'src/DTOS/NotificationListDto';
+import { OfferListDto } from 'src/DTOS/OfferListDto';
 import { CarService } from '../services/car.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CarService } from '../services/car.service';
   styleUrls: ['./offers.component.css']
 })
 export class OffersComponent implements OnInit {
-  notifications: Array<NotificationListDto>;
+  offers: Array<OfferListDto>;
   constructor(private carService: CarService) { }
 
   ngOnInit(): void {
@@ -16,19 +17,19 @@ export class OffersComponent implements OnInit {
   }
 
   fetchNotifications(){
-    this.carService.notifications().subscribe(notifications =>{ 
-      this.notifications = notifications;
+    this.carService.offers().subscribe(offers =>{ 
+      this.offers = offers;
     })
   }
   
-  accept(id: number){
-    this.carService.accept(id).subscribe(res => {
+  acceptOffer(id: number){
+    this.carService.acceptOffer(id).subscribe(res => {
       this.fetchNotifications();
     })
   }
 
-  decline(id: number){
-    this.carService.decline(id).subscribe(res => {
+  declineOffer(id: number){
+    this.carService.declineOffer(id).subscribe(res => {
       this.fetchNotifications();
     })
   }

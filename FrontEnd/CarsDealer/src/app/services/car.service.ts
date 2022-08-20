@@ -7,6 +7,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { UserAdminDto } from 'src/DTOS/UserAdminDto';
 import { ApproveDisapprove } from 'src/DTOS/ApproveDisapproveDto';
 import { NotificationListDto } from 'src/DTOS/NotificationListDto';
+import { OfferListDto } from 'src/DTOS/OfferListDto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,11 @@ export class CarService {
   private approveCarUrl = environment.apiUrl + '/api/cars/ApproveCar';
   private disApproveCarUrl = environment.apiUrl + '/api/cars/DisApproveCar';
   private carUpdateDetailsUrl = environment.apiUrl + '/api/cars/CarUpdateDetails';
+  private offerListUrl = environment.apiUrl + '/api/cars/GetMyOffers';
+  private acceptOfferUrl = environment.apiUrl + '/api/cars/AcceptOffer';
+  private declineOfferUrl = environment.apiUrl + '/api/cars/DeclineOffer';
   private notificationListUrl = environment.apiUrl + '/api/cars/GetMyNotifications';
-  private acceptNotificationUrl = environment.apiUrl + '/api/cars/AcceptOffer';
-  private declineNotificationUrl = environment.apiUrl + '/api/cars/DeclineOffer';
+  private makeOfferUrl = environment.apiUrl + '/api/cars/MakeOffer';
   protected currentUserName: string = '';
   constructor(private http: HttpClient) { }
   isUserAdminA: boolean;
@@ -79,16 +82,24 @@ export class CarService {
     return this.http.post(this.disApproveCarUrl + '/' + id, {});
   }
 
-  notifications(): Observable<Array<NotificationListDto>>{
+  offers(): Observable<Array<OfferListDto>>{
+    return this.http.get<Array<OfferListDto>>(this.offerListUrl);
+  }
+
+  acceptOffer(id: number){
+    return this.http.post(this.acceptOfferUrl + '/' + id, {});
+  }
+
+  declineOffer(id: number){
+    return this.http.post(this.declineOfferUrl + '/' + id, {});
+  }
+
+  notifications() : Observable<Array<NotificationListDto>>{
     return this.http.get<Array<NotificationListDto>>(this.notificationListUrl);
   }
 
-  accept(id: number){
-    return this.http.post(this.acceptNotificationUrl + '/' + id, {});
-  }
-
-  decline(id: number){
-    return this.http.post(this.declineNotificationUrl + '/' + id, {});
+  makeOffer(data: any){
+    return this.http.post(this.makeOfferUrl, data);
   }
 
 }
