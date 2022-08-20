@@ -5,7 +5,7 @@ namespace CarsDealer.Services.Interfaces
 {
     public interface IUserService
     {
-        string CurrentUserName(string userName);
+        string GetUserName(string userId);
         bool isUserInAdminRole(string userId);
     }
 }

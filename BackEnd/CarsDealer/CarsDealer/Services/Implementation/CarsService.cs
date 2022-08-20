@@ -15,11 +15,13 @@ namespace CarsDealer.Services.Implementation
     {
         private readonly ApplicationDbContext _db;
         private readonly IImageService _imageService;
+        private readonly INotificationService _notificationService;
 
-        public CarsService(ApplicationDbContext db, IImageService imageService)
+        public CarsService(ApplicationDbContext db, IImageService imageService, INotificationService notificationService)
         {
             _db = db;
             _imageService = imageService;
+            _notificationService = notificationService;
         }
 
         public async Task<AdminCarListDto[]> AdminCars()
@@ -286,6 +288,22 @@ namespace CarsDealer.Services.Implementation
             }
 
             _db.SaveChanges();
+        }
+
+        public bool SendOffer(OfferDto dto, string senderId)
+        {
+            var car = _db.Cars
+                .Where(x => x.Id == dto.Id)
+                .FirstOrDefault();
+
+            if(senderId == car.UserId)
+            {
+                return false;
+            }
+
+            _notificationService.SendNotification(senderId, car.UserId, car, dto.Price);
+
+            return true;
         }
     }
 }

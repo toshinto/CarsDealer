@@ -1,4 +1,5 @@
 ﻿using CarsDealer.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using static CarsDealer.Data.Validation.Car;
 
@@ -39,6 +40,8 @@ namespace CarsDealer.Models
         [Required]
         public string UserId { get; set; }
         public User User { get; set; }
+
+        public IEnumerable<Notification> Notifications { get; } = new HashSet<Notification>();
 
     }
 }

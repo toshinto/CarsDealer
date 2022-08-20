@@ -17,6 +17,7 @@ namespace CarsDealer.Services.Interfaces
         Task<AdminCarListDto[]> AdminCars();
         CarUpdateDetailsDto GetCarUpdateDetails(int carId);
         void DeleteCarByAdmin(int carId);
+        bool SendOffer(OfferDto dto,string senderId);
 
     }
 }

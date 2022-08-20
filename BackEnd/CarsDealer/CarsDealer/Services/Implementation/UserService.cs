@@ -14,9 +14,13 @@ namespace CarsDealer.Services.Implementation
         {
             this.db = db;
         }
-        public string CurrentUserName(string userName)
+
+        public string GetUserName(string userId)
         {
-            return userName;
+            return db.Users
+                .Where(x => x.Id == userId)
+                .Select(t => t.UserName)
+                .FirstOrDefault();
         }
 
         public bool isUserInAdminRole(string userId)

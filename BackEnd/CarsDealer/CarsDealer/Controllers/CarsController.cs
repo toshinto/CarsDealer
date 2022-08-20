@@ -23,13 +23,15 @@ namespace CarsDealer.Controllers
         private readonly ICarsService carService;
         private readonly IUserService userService;
         private readonly IImageService imageService;
+        private readonly INotificationService notificationService;
 
-        public CarsController(ApplicationDbContext db, ICarsService carService, IUserService userService, IImageService imageService)
+        public CarsController(ApplicationDbContext db, ICarsService carService, IUserService userService, IImageService imageService, INotificationService notificationService)
         {
             _db = db;
             this.carService = carService;
             this.userService = userService;
             this.imageService = imageService;
+            this.notificationService = notificationService;
         }
 
         [Authorize]
@@ -143,6 +145,34 @@ namespace CarsDealer.Controllers
         public void DeleteCarByAdmin(int carId)
         {
             carService.DeleteCarByAdmin(carId);
+        }
+
+        [HttpPost("MakeOffer")]
+        public void MakeOffer(OfferDto dto)
+        {
+            var userId = this.User.GetId();
+
+            carService.SendOffer(dto, userId);
+        }
+
+        [HttpGet("GetMyNotifications")]
+        public GetNotificationDto[] GetMyNotifications()
+        {
+            var userId = this.User.GetId();
+
+            return notificationService.GetNotification(userId);
+        }
+
+        [HttpPost("AcceptOffer/{notificationId}")]
+        public void AcceptOffer(int notificationId)
+        {
+            notificationService.AcceptOffer(notificationId);
+        }
+
+        [HttpPost("DeclineOffer/{notificationId}")]
+        public void DeclineOffer(int notificationId)
+        {
+            notificationService.DeclineOffer(notificationId);
         }
     }
 }
