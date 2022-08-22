@@ -105,11 +105,24 @@ namespace CarsDealer.Controllers
 
         [Authorize]
         [HttpPost("UpdateCar")]
-        public bool UpdateCar(CarUpdateRequestModel model)
+        public bool UpdateCar([FromForm] IFormFile file, [FromForm] string details)
         {
             var userId = this.User.GetId();
+            var model = JsonConvert.DeserializeObject<CarUpdateRequestModel>(details);
 
-            return carService.UpdateCar(model, userId);
+            if (file != null)
+            {
+
+                var fileType = file.GetFileType();
+                model.ImageFileType = fileType;
+
+                var fileBytes = file.GetByteFromFileStream();
+
+                return carService.UpdateCarWithFile(fileBytes, model, userId);
+            }
+            {
+                return carService.UpdateCar(model, userId);
+            }
         }
 
         [Authorize]

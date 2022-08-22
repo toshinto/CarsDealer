@@ -16,12 +16,14 @@ namespace CarsDealer.Services.Implementation
         private readonly ApplicationDbContext _db;
         private readonly IImageService _imageService;
         private readonly IOfferService _offerService;
+        private readonly INotificationService _notificationService;
 
-        public CarsService(ApplicationDbContext db, IImageService imageService, IOfferService offerService)
+        public CarsService(ApplicationDbContext db, IImageService imageService, IOfferService offerService, INotificationService notificationService)
         {
             _db = db;
             _imageService = imageService;
             _offerService = offerService;
+            _notificationService = notificationService;
         }
 
         public async Task<AdminCarListDto[]> AdminCars()
@@ -60,6 +62,10 @@ namespace CarsDealer.Services.Implementation
 
             _db.SaveChanges();
 
+            var message = $"Your car {car.Brand} with model {car.Model} was approved on {DateTime.UtcNow}.";
+
+            _notificationService.AddNotification(car.UserId, message);
+
             return new ApproveDisapproveDto { State = true };
         }
 
@@ -72,6 +78,10 @@ namespace CarsDealer.Services.Implementation
             car.IsApproved = false;
 
             _db.SaveChanges();
+
+            var message = $"Your car {car.Brand} with model {car.Model} was declined on {DateTime.UtcNow} because of unappropriated picture or description. Please add new one.";
+
+            _notificationService.AddNotification(car.UserId, message);
 
             return new ApproveDisapproveDto { State = false };
 
@@ -99,6 +109,10 @@ namespace CarsDealer.Services.Implementation
 
             await this._db.SaveChangesAsync();
             _imageService.CreateImages(fileBytes, model.ImageFileType, car.Id);
+
+            var message = $"Your car must be approved by Admin.";
+
+            _notificationService.AddNotification(car.UserId, message);
 
             return car.Id;
         }
@@ -269,6 +283,7 @@ namespace CarsDealer.Services.Implementation
             car.Price = model.Price;
             car.Year = model.Year;
             car.Description = model.Description;
+            car.ImageFileType = car.ImageFileType;
 
             _db.SaveChanges();
 
@@ -304,6 +319,47 @@ namespace CarsDealer.Services.Implementation
             _offerService.SendOffer(senderId, car.UserId, car, dto.Price);
 
             return true;
+        }
+
+        public bool UpdateCarWithFile(byte[] fileBytes, CarUpdateRequestModel model, string userId)
+        {
+            _imageService.DeleteImages(model.Id);
+
+            var car = _db.Cars
+                .Where(x => x.Id == model.Id)
+                .FirstOrDefault();
+
+            if (car == null)
+            {
+                return false;
+            }
+
+            if (car.UserId != userId)
+            {
+                return false;
+            }
+
+            car.Brand = model.Brand;
+            car.Model = model.Model;
+            car.Color = model.Color;
+            car.Fuel = (Fuel)model.Fuel;
+            car.GearLever = (GearLever)model.GearLever;
+            car.Price = model.Price;
+            car.Year = model.Year;
+            car.Description = model.Description;
+            car.ImageFileType = model.ImageFileType;
+            car.IsApproved = false;
+
+            _db.SaveChanges();
+
+            _imageService.CreateImages(fileBytes, model.ImageFileType, car.Id);
+
+            var message = $"Your car must be approved by Admin because you have changed car picture or details";
+
+            _notificationService.AddNotification(car.UserId, message);
+
+            return true;
+
         }
     }
 }
