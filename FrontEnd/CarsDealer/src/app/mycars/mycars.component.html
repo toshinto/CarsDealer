@@ -1,6 +1,5 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-3">
         <div class="card" style="width: 18rem;" *ngFor="let car of cars">
           <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
           <div class="card-body">
@@ -10,7 +9,6 @@
             <button class="btn btn-warning" (click)="editCar(car.Id)">Edit</button>
             <button class="btn btn-danger" (click)="deleteCar(car.Id)">Delete</button>
           </div>
-        </div>
       </div>
     </div>
   </div>

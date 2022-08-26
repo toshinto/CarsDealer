@@ -1,6 +1,5 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-3">
         <div class="card" style="width: 18rem;" *ngFor="let offers of offers">
           <div class="card-body">
             <p class="card-text">{{offers.Message}}</p>
@@ -8,6 +7,5 @@
           <button class="btn btn-success" (click)="acceptOffer(offers.Id)">Accept</button>
           <button class="btn btn-danger" (click)="declineOffer(offers.Id)">Decline</button>
         </div>
-      </div>
     </div>
   </div>
