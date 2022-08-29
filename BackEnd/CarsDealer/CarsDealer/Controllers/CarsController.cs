@@ -56,6 +56,19 @@ namespace CarsDealer.Controllers
         [HttpPost("Create")]
         public async Task<ActionResult<int>> Create([FromForm] IFormFile file, [FromForm] string details)
         {
+            var isValidImageType = file.IsValidImageFile();
+            var isValdImageSize = file.ValidateImageSize();
+
+            if (!isValidImageType)
+            {
+                throw new Exception("File must be jpg, jpeg or png.");
+            }
+
+            if (isValdImageSize)
+            {
+                throw new Exception("File must be below 1MB");
+            }
+
             var userId = this.User.GetId();
             var model = JsonConvert.DeserializeObject<CarCreateRequestModel>(details);
             model.UserId = userId;
@@ -112,6 +125,18 @@ namespace CarsDealer.Controllers
 
             if (file != null)
             {
+                var isValidImageType = file.IsValidImageFile();
+                var isValdImageSize = file.ValidateImageSize();
+
+                if (!isValidImageType)
+                {
+                    throw new Exception("File must be jpg, jpeg or png.");
+                }
+
+                if (isValdImageSize)
+                {
+                    throw new Exception("File must be below 1MB");
+                }
 
                 var fileType = file.GetFileType();
                 model.ImageFileType = fileType;
