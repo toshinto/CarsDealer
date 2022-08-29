@@ -13,6 +13,8 @@ export class CarEditComponent implements OnInit {
   carForm: FormGroup;
   carId: number;
   car: Car;
+  public formData = new FormData();
+
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private carService: CarService, private router: Router) {
      this.carForm = this.fb.group({
       'Id': [''],
@@ -28,6 +30,13 @@ export class CarEditComponent implements OnInit {
     })
 
    }
+
+   uploadFiles(file: any) {
+    console.log('file', file)
+    for (let i = 0; i < file.length; i++) {
+      this.formData.append("file", file[i], file[i]['name']); 
+    }
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -51,7 +60,8 @@ export class CarEditComponent implements OnInit {
   }
 
   updateCar(){
-    this.carService.editCar(this.carForm.value).subscribe(res => {
+    this.formData.append('details', JSON.stringify(this.carForm.value));
+    this.carService.editCar(this.formData).subscribe(res => {
       this.router.navigate(["myCars"]);
     })
   }
