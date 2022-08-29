@@ -64,7 +64,7 @@ namespace CarsDealer.Controllers
                 throw new Exception("File must be jpg, jpeg or png.");
             }
 
-            if (isValdImageSize)
+            if (!isValdImageSize)
             {
                 throw new Exception("File must be below 1MB");
             }
@@ -133,7 +133,7 @@ namespace CarsDealer.Controllers
                     throw new Exception("File must be jpg, jpeg or png.");
                 }
 
-                if (isValdImageSize)
+                if (!isValdImageSize)
                 {
                     throw new Exception("File must be below 1MB");
                 }

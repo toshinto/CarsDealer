@@ -140,7 +140,7 @@ namespace CarsDealer.Services.Implementation
         public async Task<CarsListDto[]> GetAllCars()
         {
             var cars = _db.Cars
-                .Where(x => x.IsDeleted == false)
+                .Where(x => x.IsDeleted == false && x.IsApproved == true)
                 .Select(x => new CarsListDto
                 {
                     Id = x.Id,
@@ -231,7 +231,7 @@ namespace CarsDealer.Services.Implementation
         public async Task<CarsListDto[]> GetMyCars(string userId)
         {
             var cars = _db.Cars
-                .Where(x => x.UserId == userId && x.IsDeleted == false)
+                .Where(x => x.UserId == userId && x.IsDeleted == false && x.IsApproved == true)
                 .Select(x => new CarsListDto
                 {
                     Id = x.Id,
