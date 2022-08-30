@@ -21,6 +21,8 @@ import { CarEditComponent } from './car-edit/car-edit.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotificationComponent } from './notification/notification.component';
 import { OffersComponent } from './offers/offers.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { OffersComponent } from './offers/offers.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [
     AuthService, 
