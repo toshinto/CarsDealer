@@ -22,7 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NotificationComponent } from './notification/notification.component';
 import { OffersComponent } from './offers/offers.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { JwPaginationModule } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HttpClientModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
-    MatPaginatorModule
+    JwPaginationModule
   ],
   providers: [
     AuthService, 

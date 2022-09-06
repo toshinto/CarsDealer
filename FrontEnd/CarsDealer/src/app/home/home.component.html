@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-      <div class="card" style="width: 18rem;" *ngFor="let car of (cars | slice: lowValue : highValue)">
+      <div class="card" style="width: 18rem;" *ngFor="let car of pageOfItems">
         <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{car.Model}}</h5>
@@ -9,8 +9,9 @@
         </div>
     </div>
   </div>
-  <mat-paginator [length]="cars.length" [pageSize]="1" [pageSizeOptions]="[1, 4, 8, 100]" (page)="getPaginationData($event)" aria-label="Select page">
-  </mat-paginator>
+  <div class="card-footer pb-0 pt-3">
+    <jw-pagination [items]="cars" [pageSize]="9" (changePage)="onChangePage($event)"></jw-pagination>
+</div>
 </div>
 
 
