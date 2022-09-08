@@ -7,7 +7,7 @@ export interface Car{
     GearLever: number,
     Price: number,
     Year: number,
-    City: number,
+    City: string,
     Color: number,
     ImageFileType: string,
     ImageBase64: string,

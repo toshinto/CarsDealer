@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CarService } from '../services/car.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -18,8 +19,10 @@ export class HeaderComponent implements OnInit, OnDestroy{
   isAdmin: boolean;
 
   ngOnInit(): void {
-    this.subscription = this.carService.isAdmin().subscribe(data => {
-      this.isAdmin = data.IsAdmin as boolean;
+    this.carService.isAdmin().pipe(take(1)).subscribe(data => {
+      if(data){
+        this.isAdmin = data.IsAdmin as boolean;
+      }
 
       // let currentUrl = this.router.url;
       // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
