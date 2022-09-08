@@ -1,4 +1,6 @@
-﻿namespace CarsDealer.DTOS
+﻿using System;
+
+namespace CarsDealer.DTOS
 {
     public class CarDetailsDto
     {
@@ -14,5 +16,6 @@
         public string ImageBase64 { get; set; }
         public string City { get; set; }
         public string Color { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CarsDealer.DTOS
+﻿using System;
+
+namespace CarsDealer.DTOS
 {
     public class AdminCarListDto
     {
@@ -7,5 +9,6 @@
         public string Model { get; set; }
         public string ImageFileType { get; set; }
         public string ImageBase64 { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

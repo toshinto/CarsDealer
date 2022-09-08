@@ -36,8 +36,10 @@ namespace CarsDealer.Services.Implementation
                     Brand = x.Brand,
                     Model = x.Model,
                     ImageFileType = x.ImageFileType,
+                    CreatedOn = x.CreatedOn,
 
                 })
+                .OrderBy(x => x.CreatedOn)
                 .ToArrayAsync();
 
             foreach (var car in adminCars.Result)
@@ -102,7 +104,10 @@ namespace CarsDealer.Services.Implementation
                 Model = model.Model,
                 Price = model.Price,
                 Year = model.Year,
-                UserId = model.UserId
+                UserId = model.UserId,
+                City = model.City,
+                CreatedOn = DateTime.UtcNow,
+                
             };
 
             this._db.Add(car);
@@ -152,8 +157,10 @@ namespace CarsDealer.Services.Implementation
                     Price = x.Price,
                     Year = x.Year,
                     ImageFileType = x.ImageFileType,
+                    CreatedOn = x.CreatedOn
                     
                 })
+                .OrderByDescending(x => x.CreatedOn)
                 .ToArrayAsync();
 
             foreach(var car in cars.Result)
@@ -184,6 +191,9 @@ namespace CarsDealer.Services.Implementation
                     Year = y.Year,
                     ImageFileType = y.ImageFileType,
                     Color = y.Color,
+                    City = y.City,
+                    CreatedOn = y.CreatedOn,
+                    
                 })
                 .FirstOrDefault();
 
@@ -217,6 +227,7 @@ namespace CarsDealer.Services.Implementation
                    Year = y.Year,
                    ImageFileType = y.ImageFileType,
                    Color = y.Color,
+                   City = y.City
                })
                .FirstOrDefault();
 
@@ -243,8 +254,10 @@ namespace CarsDealer.Services.Implementation
                     Price = x.Price,
                     Year = x.Year,
                     ImageFileType = x.ImageFileType,
+                    CreatedOn = x.CreatedOn,
 
                 })
+                .OrderByDescending(x => x.CreatedOn)
                 .ToArrayAsync();
 
             foreach (var car in cars.Result)
@@ -284,6 +297,7 @@ namespace CarsDealer.Services.Implementation
             car.Year = model.Year;
             car.Description = model.Description;
             car.ImageFileType = car.ImageFileType;
+            car.City = model.City;
 
             _db.SaveChanges();
 
@@ -348,6 +362,7 @@ namespace CarsDealer.Services.Implementation
             car.Year = model.Year;
             car.Description = model.Description;
             car.ImageFileType = model.ImageFileType;
+            car.City = model.City;
             car.IsApproved = false;
 
             _db.SaveChanges();

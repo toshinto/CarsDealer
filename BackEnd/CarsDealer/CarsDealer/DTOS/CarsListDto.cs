@@ -1,4 +1,6 @@
-﻿namespace CarsDealer.DTOS
+﻿using System;
+
+namespace CarsDealer.DTOS
 {
     public class CarsListDto
     {
@@ -12,5 +14,6 @@
         public decimal Price { get; set; }
         public int Year { get; set; }
         public string ImageBase64 { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

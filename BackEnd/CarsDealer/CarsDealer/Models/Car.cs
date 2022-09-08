@@ -1,4 +1,5 @@
 ﻿using CarsDealer.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using static CarsDealer.Data.Validation.Car;
@@ -36,6 +37,9 @@ namespace CarsDealer.Models
         public bool IsDeleted { get; set; }
         public bool IsApproved { get; set; }
         public string ImageFileType { get; set; }
+
+        public string City { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         [Required]
         public string UserId { get; set; }

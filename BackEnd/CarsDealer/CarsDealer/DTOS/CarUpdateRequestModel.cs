@@ -34,5 +34,6 @@ namespace CarsDealer.DTOS
         public string Color { get; set; }
 
         public string ImageFileType { get; set; }
+        public string City { get; set; }
     }
 }
