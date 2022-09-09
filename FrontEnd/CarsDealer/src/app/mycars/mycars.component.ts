@@ -10,11 +10,16 @@ import { CarService } from '../services/car.service';
 })
 export class MycarsComponent implements OnInit {
   cars: Array<Car>;
+  pageOfItems: Array<any>
 
   constructor(private carService: CarService, private router: Router) { }
 
   ngOnInit() {
     this.fetchCars();
+  }
+  
+  onChangePage(pageOfItems: Array<any>){
+    this.pageOfItems = pageOfItems;
   }
 
   fetchCars(){
