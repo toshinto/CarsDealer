@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class HomeComponent implements OnInit {
   cars: Array<Car>;
-  pageOfItems: Array<any>
+  pageOfItems: Array<any>;
   constructor(private http: HttpClient, private carService: CarService) { }
   ngOnInit() {
     this.carService.getAllCars().subscribe(cars =>{ 

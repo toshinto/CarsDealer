@@ -23,11 +23,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
       if(data){
         this.isAdmin = data.IsAdmin as boolean;
       }
-
-      // let currentUrl = this.router.url;
-      // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-      //   this.router.navigate([currentUrl]);
-      // })
     })
    
   }
@@ -40,8 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   logoutHandler(): void{
-    this.authService.removeToken();
     localStorage.removeItem('username');
+    this.authService.removeToken();
     this.router.navigate(['login']);
   }
 

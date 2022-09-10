@@ -71,3 +71,8 @@ header {
     border-left: 1px solid lightgrey;
     padding-left: .5em;
   }
+
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
