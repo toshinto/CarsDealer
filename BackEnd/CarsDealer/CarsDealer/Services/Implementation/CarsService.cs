@@ -228,8 +228,14 @@ namespace CarsDealer.Services.Implementation
                    ImageFileType = y.ImageFileType,
                    Color = y.Color,
                    City = y.City
+
                })
                .FirstOrDefault();
+
+            var bytes = _imageService.GetImage(car.Id, car.ImageFileType);
+            var imageBase64String = Convert.ToBase64String(bytes);
+
+            car.ImageBase64 = imageBase64String;
 
             if (car == null)
             {
