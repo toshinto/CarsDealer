@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   logoutHandler(): void{
     localStorage.removeItem('username');
     this.authService.removeToken();
-    this.router.navigate(['login']);
+    this.router.navigate(['home']);
   }
 
   get currentUserName(){
