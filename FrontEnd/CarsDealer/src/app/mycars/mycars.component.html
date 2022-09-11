@@ -7,7 +7,7 @@
             <p class="card-text">{{car.Model}}</p>
             <a routerLink="/cars/{{car.Id}}" class="btn btn-primary">More Details</a>
             <button class="btn btn-warning" (click)="editCar(car.Id)">Edit</button>
-            <button class="btn btn-danger" (click)="deleteCar(car.Id)">Delete</button>
+            <button class="btn btn-danger" (click)="confirmDialog(car.Id)">Delete</button>
           </div>
       </div>
     </div>
