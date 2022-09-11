@@ -23,6 +23,9 @@ import { NotificationComponent } from './notification/notification.component';
 import { OffersComponent } from './offers/offers.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { JwPaginationModule } from 'jw-angular-pagination';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { JwPaginationModule } from 'jw-angular-pagination';
     AdminComponent,
     NotificationComponent,
     OffersComponent,
+    ConfirmDialogComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import { JwPaginationModule } from 'jw-angular-pagination';
     HttpClientModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
-    JwPaginationModule
+    JwPaginationModule,
+    MatDialogModule
   ],
   providers: [
     AuthService, 

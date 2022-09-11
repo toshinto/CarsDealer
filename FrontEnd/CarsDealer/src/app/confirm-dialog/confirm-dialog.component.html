@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>
+    {{title}}
+    </h1>
+    
+    <div mat-dialog-content>
+    <p>{{message}}</p>
+    </div>
+    
+    <div mat-dialog-actions>
+      <button mat-button (click)="onDelete()">Cancel</button>
+      <button mat-raised-button (click)="onCommand()">Yes</button>
+      </div>
+    
