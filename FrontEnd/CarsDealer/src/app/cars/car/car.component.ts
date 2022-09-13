@@ -15,15 +15,16 @@ export class CarComponent implements OnInit {
   car: Car;
   constructor(private fb: FormBuilder, private carService: CarService, private router: Router) {
     this.carForm = this.fb.group({
-      'Brand': ['', Validators.required],
-      'Model': ['', Validators.required],
-      'Description': ['', Validators.required],
-      'Fuel': ['', Validators.required],
-      'GearLever': ['', Validators.required],
-      'Price': ['', Validators.required],
-      'Year': ['', Validators.required],
-      'City': ['', Validators.required],
-      'Color': ['', Validators.required],
+      'Brand': ['', [Validators.required]],
+      'Model': ['', [Validators.required]],
+      'Description': ['', [Validators.required]],
+      'Fuel': ['', [Validators.required]],
+      'GearLever': ['', [Validators.required]],
+      'Price': ['', [Validators.required]],
+      'Year': ['', [Validators.required]],
+      'City': ['', [Validators.required]],
+      'Color': ['', [Validators.required]],
+      'Picture': ['', [Validators.required]]
     })
     
    }

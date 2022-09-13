@@ -48,4 +48,12 @@ export class HeaderComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe();
   }
 
+  isUserAdmin(): boolean{
+    var isAdmin = localStorage.getItem('admin');
+    if(isAdmin == "Admin"){
+      return true;
+    }
+    return false;
+  }
+
 }

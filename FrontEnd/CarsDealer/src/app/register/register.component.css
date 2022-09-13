@@ -3,3 +3,7 @@ form {
     padding: 10% 15%;
     margin-top: 20%;
 }
+
+.error{
+    color:red;
+}
