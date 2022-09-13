@@ -1,5 +1,6 @@
 ﻿using CarsDealer.Data.Models.Identity;
 using CarsDealer.Models;
+using CarsDealer.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -17,11 +18,13 @@ namespace CarsDealer.Controllers
     public class IdentityController : ControllerBase
     {
         private readonly UserManager<User> userManager;
+        private readonly IUserService userService;
         private readonly ApplicationSettings _appSettings;
 
-        public IdentityController(UserManager<User> userManager, IOptions<ApplicationSettings> appSettings)
+        public IdentityController(UserManager<User> userManager, IOptions<ApplicationSettings> appSettings, IUserService userService)
         {
             this.userManager = userManager;
+            this.userService = userService;
             _appSettings = appSettings.Value;
         }
 
@@ -75,6 +78,8 @@ namespace CarsDealer.Controllers
 
             };
 
+            var isAdmin = userService.isUserInAdminRole(user.Id);
+
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var encryptedToken = tokenHandler.WriteToken(token);
 
@@ -82,6 +87,7 @@ namespace CarsDealer.Controllers
             {
                 Token = encryptedToken,
                 UserName = model.UserName,
+                IsAdmin = isAdmin ? "Admin" : "Not an admin"
             };
 
         }
