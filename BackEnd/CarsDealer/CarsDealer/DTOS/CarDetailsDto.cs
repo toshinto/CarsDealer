@@ -17,5 +17,7 @@ namespace CarsDealer.DTOS
         public string City { get; set; }
         public string Color { get; set; }
         public DateTime CreatedOn { get; set; }
+        public int HorsePower { get; set; }
+        public int Kilometeres { get; set; }
     }
 }

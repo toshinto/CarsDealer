@@ -107,6 +107,8 @@ namespace CarsDealer.Services.Implementation
                 UserId = model.UserId,
                 City = model.City,
                 CreatedOn = DateTime.UtcNow,
+                HorsePower = model.HorsePower,
+                Kilometeres = model.Kilometeres,
                 
             };
 
@@ -157,7 +159,9 @@ namespace CarsDealer.Services.Implementation
                     Price = x.Price,
                     Year = x.Year,
                     ImageFileType = x.ImageFileType,
-                    CreatedOn = x.CreatedOn
+                    CreatedOn = x.CreatedOn,
+                    HorsePower = x.HorsePower,
+                    Kilometeres = x.Kilometeres,
                     
                 })
                 .OrderByDescending(x => x.CreatedOn)
@@ -193,6 +197,8 @@ namespace CarsDealer.Services.Implementation
                     Color = y.Color,
                     City = y.City,
                     CreatedOn = y.CreatedOn,
+                    HorsePower = y.HorsePower,
+                    Kilometeres = y.Kilometeres,
                     
                 })
                 .FirstOrDefault();
@@ -227,7 +233,10 @@ namespace CarsDealer.Services.Implementation
                    Year = y.Year,
                    ImageFileType = y.ImageFileType,
                    Color = y.Color,
-                   City = y.City
+                   City = y.City,
+                   HorsePower = y.HorsePower,
+                   Kilometeres = y.Kilometeres,
+
 
                })
                .FirstOrDefault();
@@ -261,6 +270,8 @@ namespace CarsDealer.Services.Implementation
                     Year = x.Year,
                     ImageFileType = x.ImageFileType,
                     CreatedOn = x.CreatedOn,
+                    HorsePower = x.HorsePower,
+                    Kilometeres = x.Kilometeres,
 
                 })
                 .OrderByDescending(x => x.CreatedOn)
@@ -294,6 +305,14 @@ namespace CarsDealer.Services.Implementation
                 return false;
             }
 
+            if (car.Brand != model.Brand || car.Model != model.Model || car.Color != model.Color || car.Fuel != (Fuel)model.Fuel || car.GearLever != (GearLever)model.GearLever || car.Price != model.Price || car.Year != model.Year || car.Description != model.Description || car.City != model.City || car.Kilometeres != model.Kilometeres || car.HorsePower != model.HorsePower)
+            {
+                var message = $"Your car must be approved by Admin because you have changed car picture or details";
+
+                _notificationService.AddNotification(car.UserId, message);
+                car.IsApproved = false;
+            }
+
             car.Brand = model.Brand;
             car.Model = model.Model;
             car.Color = model.Color;
@@ -304,6 +323,8 @@ namespace CarsDealer.Services.Implementation
             car.Description = model.Description;
             car.ImageFileType = car.ImageFileType;
             car.City = model.City;
+            car.HorsePower = model.HorsePower;
+            car.Kilometeres = model.Kilometeres;
 
             _db.SaveChanges();
 
@@ -369,6 +390,8 @@ namespace CarsDealer.Services.Implementation
             car.Description = model.Description;
             car.ImageFileType = model.ImageFileType;
             car.City = model.City;
+            car.HorsePower = model.HorsePower;
+            car.Kilometeres = model.Kilometeres;
             car.IsApproved = false;
 
             _db.SaveChanges();

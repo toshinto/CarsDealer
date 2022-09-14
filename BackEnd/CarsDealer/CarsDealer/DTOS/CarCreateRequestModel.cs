@@ -37,5 +37,7 @@ namespace CarsDealer.DTOS
         public string UserId { get; set; }
 
         public string City { get; set; }
+        public int HorsePower { get; set; }
+        public int Kilometeres { get; set; }
     }
 }

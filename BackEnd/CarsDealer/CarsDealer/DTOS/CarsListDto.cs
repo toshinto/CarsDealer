@@ -15,5 +15,7 @@ namespace CarsDealer.DTOS
         public int Year { get; set; }
         public string ImageBase64 { get; set; }
         public DateTime CreatedOn { get; set; }
+        public int HorsePower { get; set; }
+        public int Kilometeres { get; set; }
     }
 }

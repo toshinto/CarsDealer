@@ -16,5 +16,7 @@ namespace CarsDealer.DTOS
         public string ImageBase64 { get; set; }
         public string City { get; set; }
         public string Color { get; set; }
+        public int HorsePower { get; set; }
+        public int Kilometeres { get; set; }
     }
 }

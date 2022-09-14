@@ -45,6 +45,9 @@ namespace CarsDealer.Models
         public string UserId { get; set; }
         public User User { get; set; }
 
+        public int HorsePower { get; set; }
+        public int Kilometeres { get; set; }
+
         public IEnumerable<Offer> Offers { get; } = new HashSet<Offer>();
 
     }
