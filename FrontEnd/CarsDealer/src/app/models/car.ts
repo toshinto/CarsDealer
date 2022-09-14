@@ -11,5 +11,7 @@ export interface Car{
     Color: number,
     ImageFileType: string,
     ImageBase64: string,
+    HorsePower: number,
+    Kilometeres: number,
 
 }

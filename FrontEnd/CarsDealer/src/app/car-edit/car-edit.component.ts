@@ -27,6 +27,8 @@ export class CarEditComponent implements OnInit {
       'Year': [''],
       'City': [''],
       'Color': [''],
+      'HorsePower': [''],
+      'Kilometeres': ['']
     })
 
    }
@@ -45,15 +47,17 @@ export class CarEditComponent implements OnInit {
         this.car = res;
         this.carForm = this.fb.group({
           'Id': [this.car.Id],
-          'Brand': [this.car.Brand],
-          'Model': [this.car.Model],
-          'Description': [this.car.Description],
-          'Fuel': [this.car.Fuel],
-          'GearLever': [this.car.GearLever],
-          'Price': [this.car.Price],
-          'Year': [this.car.Year],
-          'City': [this.car.City],
-          'Color': [this.car.Color],
+          'Brand': [this.car.Brand, [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z0-9]+/)]],
+          'Model': [this.car.Model, [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z0-9]+/)]],
+          'Description': [this.car.Description, [Validators.required]],
+          'Fuel': [this.car.Fuel, [Validators.required]],
+          'GearLever': [this.car.GearLever, [Validators.required]],
+          'Price': [this.car.Price, [Validators.required, Validators.min(1)]],
+          'Year': [this.car.Year,  [Validators.required, Validators.min(1900)]],
+          'City': [this.car.City, [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
+          'Color': [this.car.Color, [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
+          'Kilometeres': [this.car.Kilometeres, [Validators.required, Validators.min(0)]],
+          'HorsePower': [this.car.HorsePower, [Validators.required, Validators.min(1)]]
         })
       });
     })

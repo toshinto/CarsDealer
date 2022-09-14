@@ -15,15 +15,17 @@ export class CarComponent implements OnInit {
   car: Car;
   constructor(private fb: FormBuilder, private carService: CarService, private router: Router) {
     this.carForm = this.fb.group({
-      'Brand': ['', [Validators.required]],
-      'Model': ['', [Validators.required]],
+      'Brand': ['', [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z0-9]+/)]],
+      'Model': ['', [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z0-9]+/)]],
       'Description': ['', [Validators.required]],
       'Fuel': ['', [Validators.required]],
       'GearLever': ['', [Validators.required]],
-      'Price': ['', [Validators.required]],
-      'Year': ['', [Validators.required]],
-      'City': ['', [Validators.required]],
-      'Color': ['', [Validators.required]],
+      'Price': ['', [Validators.required, Validators.min(1)]],
+      'Year': ['', [Validators.required, Validators.min(1900)]],
+      'City': ['', [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
+      'Color': ['', [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
+      'HorsePower': ['', [Validators.required, Validators.min(1)]],
+      'Kilometeres': ['', [Validators.required, Validators.min(0)]],
       'Picture': ['', [Validators.required]]
     })
     

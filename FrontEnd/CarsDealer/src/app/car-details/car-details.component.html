@@ -14,6 +14,8 @@
                 <h2>Year: {{car.Year}}</h2>
                 <h2>Color: {{car.Color}}</h2>
                 <h2>City: {{car.City}}</h2>
+                <h2>HorsePower: {{car.HorsePower}}</h2>
+                <h2>Kilometeres: {{car.Kilometeres}</h2>
             </div>
         </div>
         <form [formGroup]="offerForm">
@@ -21,7 +23,10 @@
                 <label for="price">Price</label>
                 <input type="number" class="form-control" formControlName="Price">
             </div>
-            <button type="submit" class="btn btn-primary" (click)="makeOffer()">Make offer</button>
+            <ng-container *ngIf="offerForm.controls['Price'].touched && offerForm.controls['Price'].invalid">
+                <p *ngIf="offerForm.controls['Price'].errors?.['min']" class="error">Price must be positive number.</p>
+              </ng-container>
+            <button type="submit" [disabled]="offer" class="btn btn-primary" (click)="makeOffer()">Make offer</button>
         </form>
      </ng-container>
 </div>

@@ -1,57 +1,109 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-            <form [formGroup]="carForm" (ngSubmit)="createCar()">
-                <div class="form-group">
-                  <label for="brand">Brand</label>
-                  <input type="text" class="form-control" formControlName="Brand">
-                </div>
-                <div class="form-group">
-                  <label for="model">Model</label>
-                  <input type="text" class="form-control" formControlName="Model">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea type="text" class="form-control" formControlName="Description"></textarea>
-                </div>
-                <p class="field field-icon">
-                    <label for="fuel">Fuel type: </label>
-                    <select name="fuel" id="fuel" class="fuel" formControlName="Fuel">
-                      <option value="0">Gasoline</option>
-                      <option value="1">Diesel</option>
-                      <option value="2">Electric</option>
-                    </select>
-                  </p>
-                  <p class="field field-icon">
-                    <label for="gearLever">Gear lever: </label>
-                    <select name="gearLever" id="gearLever" class="gearLever" formControlName="GearLever">
-                      <option value="0">Manual</option>
-                      <option value="1">Automatic</option>
-                    </select>
-                  </p>
-                <div>
-                    <label for="price">Price</label>
-                    <input type="number" class="form-control" formControlName="Price">
-                </div>
-                <div>
-                    <label for="price">Year</label>
-                    <input type="number" class="form-control" formControlName="Year">
-                </div>
-                <div>
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" formControlName="City">
-                </div>
-                <div>
-                    <label for="color">Color</label>
-                    <input type="text" class="form-control" formControlName="Color">
-                </div>
-                <div class="form-group">
-                  <label for="file">Choose File</label><br /> <input type="file" id="file" (change)="uploadFiles($any($event.target).files)" required formControlName="Picture">
-                </div>
-                <button type="submit" [disabled]="carForm.invalid" class="btn btn-primary">Create car</button>
-            </form>
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <form [formGroup]="carForm" (ngSubmit)="createCar()">
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input type="text" class="form-control" formControlName="Brand">
         </div>
-        <div class="col-lg-4"></div>
+        <ng-container *ngIf="carForm.controls['Brand'].touched && carForm.controls['Brand'].invalid">
+          <p *ngIf="carForm.controls['Brand'].errors?.['required']" class="error">Brand is required.</p>
+          <p *ngIf="carForm.controls['Brand'].errors?.['pattern']" class="error">Brand must start with capital letter
+            and atleast 2 charaters.</p>
+        </ng-container>
+        <div class="form-group">
+          <label for="model">Model</label>
+          <input type="text" class="form-control" formControlName="Model">
+        </div>
+        <ng-container *ngIf="carForm.controls['Model'].touched && carForm.controls['Model'].invalid">
+          <p *ngIf="carForm.controls['Model'].errors?.['required']" class="error">Model is required.</p>
+          <p *ngIf="carForm.controls['Model'].errors?.['pattern']" class="error">Model must start with capital letter
+            and atleast 2 charaters.</p>
+        </ng-container>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea type="text" class="form-control" formControlName="Description"></textarea>
+        </div>
+        <ng-container *ngIf="carForm.controls['Description'].touched && carForm.controls['Description'].invalid">
+          <p *ngIf="carForm.controls['Description'].errors?.['required']" class="error">Description is required.</p>
+        </ng-container>
+        <p class="field field-icon">
+          <label for="fuel">Fuel type: </label>
+          <select name="fuel" id="fuel" class="fuel" formControlName="Fuel">
+            <option value="0">Gasoline</option>
+            <option value="1">Diesel</option>
+            <option value="2">Electric</option>
+          </select>
+        </p>
+        <ng-container *ngIf="carForm.controls['Fuel'].touched && carForm.controls['Fuel'].invalid">
+          <p *ngIf="carForm.controls['Fuel'].errors?.['required']" class="error">Fuel is required.</p>
+        </ng-container>
+        <p class="field field-icon">
+          <label for="gearLever">Gear lever: </label>
+          <select name="gearLever" id="gearLever" class="gearLever" formControlName="GearLever">
+            <option value="0">Manual</option>
+            <option value="1">Automatic</option>
+          </select>
+        </p>
+        <ng-container *ngIf="carForm.controls['GearLever'].touched && carForm.controls['GearLever'].invalid">
+          <p *ngIf="carForm.controls['GearLever'].errors?.['required']" class="error">GearLever is required.</p>
+        </ng-container>
+        <div>
+          <label for="price">Price</label>
+          <input type="number" class="form-control" formControlName="Price">
+        </div>
+        <ng-container *ngIf="carForm.controls['Price'].touched && carForm.controls['Price'].invalid">
+          <p *ngIf="carForm.controls['Price'].errors?.['required']" class="error">Price is required.</p>
+          <p *ngIf="carForm.controls['Price'].errors?.['min']" class="error">Price must be positive number.</p>
+        </ng-container>
+        <div>
+          <label for="price">Year</label>
+          <input type="number" class="form-control" formControlName="Year">
+        </div>
+        <ng-container *ngIf="carForm.controls['Year'].touched && carForm.controls['Year'].invalid">
+          <p *ngIf="carForm.controls['Year'].errors?.['required']" class="error">Year is required.</p>
+          <p *ngIf="carForm.controls['Year'].errors?.['min']" class="error">Year must be atleast 1900.</p>
+        </ng-container>
+        <div>
+          <label for="city">City</label>
+          <input type="text" class="form-control" formControlName="City">
+        </div>
+        <ng-container *ngIf="carForm.controls['City'].touched && carForm.controls['City'].invalid">
+          <p *ngIf="carForm.controls['City'].errors?.['required']" class="error">City is required.</p>
+          <p *ngIf="carForm.controls['City'].errors?.['pattern']" class="error">City must start with capital letter and contains only letters.</p>
+        </ng-container>
+        <div>
+          <label for="color">Color</label>
+          <input type="text" class="form-control" formControlName="Color">
+        </div>
+        <ng-container *ngIf="carForm.controls['Color'].touched && carForm.controls['Color'].invalid">
+          <p *ngIf="carForm.controls['Color'].errors?.['required']" class="error">Color is required</p>
+          <p *ngIf="carForm.controls['Color'].errors?.['pattern']" class="error">Color must start with capital letter and contains only letters.</p>
+        </ng-container>
+        <div>
+          <label for="horsePower">HorsePower</label>
+          <input type="text" class="form-control" formControlName="HorsePower">
+        </div>
+        <ng-container *ngIf="carForm.controls['HorsePower'].touched && carForm.controls['HorsePower'].invalid">
+          <p *ngIf="carForm.controls['HorsePower'].errors?.['required']" class="error">HorsePower is required.</p>
+          <p *ngIf="carForm.controls['HorsePower'].errors?.['min']" class="error">HorsePower must be a positive number.</p>
+        </ng-container>
+        <div>
+          <label for="kilometeres">Kilometeres</label>
+          <input type="text" class="form-control" formControlName="Kilometeres">
+        </div>
+        <ng-container *ngIf="carForm.controls['Kilometeres'].touched && carForm.controls['Kilometeres'].invalid">
+          <p *ngIf="carForm.controls['Kilometeres'].errors?.['required']" class="error">Kilometeres is required.</p>
+          <p *ngIf="carForm.controls['Kilometeres'].errors?.['min']" class="error">Kilometers can not be negative number.</p>
+        </ng-container>
+        <div class="form-group">
+          <label for="file">Choose File</label><br /> <input type="file" id="file"
+            (change)="uploadFiles($any($event.target).files)" required formControlName="Picture">
+        </div>
+        <button type="submit" [disabled]="carForm.invalid" class="btn btn-primary">Create car</button>
+      </form>
     </div>
+    <div class="col-lg-4"></div>
+  </div>
 </div>
