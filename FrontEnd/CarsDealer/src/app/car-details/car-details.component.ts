@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from '../models/car';
 import { CarService } from '../services/car.service';
+import { AlertService } from '../_alert';
 
 @Component({
   selector: 'app-car-details',
@@ -14,7 +15,7 @@ export class CarDetailsComponent implements OnInit {
   car: Car;
   offerForm: FormGroup;
   offer: boolean = false;
-  constructor(private route: ActivatedRoute, private carService: CarService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private carService: CarService, private fb: FormBuilder, private alertService: AlertService) {
     this.route.params.subscribe(res => {
       this.id = res['id'];
       this.carService.getCar(this.id).subscribe(res => {
@@ -35,8 +36,14 @@ export class CarDetailsComponent implements OnInit {
   makeOffer(){
     console.log(this.offerForm.value);
     this.carService.makeOffer(this.offerForm.value).subscribe(res => {
-    this.offerForm.reset();
-    this.offer = true;
+      if(res === true){
+        this.offerForm.reset();
+        this.offer = true;
+        this.alertService.success("You have successfully send an offer.");
+      }
+      else{
+        this.alertService.error("You are the owner of this car, so you can not send offers to yourself.")
+      }
     });
   }
 

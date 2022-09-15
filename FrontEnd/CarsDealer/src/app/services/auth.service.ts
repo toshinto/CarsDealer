@@ -38,4 +38,8 @@ export class AuthService {
 
     return false;
   }
+
+  getIsAdminStatus(){
+    return localStorage.getItem('admin');
+  }
 }

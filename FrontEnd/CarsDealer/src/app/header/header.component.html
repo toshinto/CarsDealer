@@ -47,7 +47,7 @@
             <a routerLink="/notifications" routerLinkActive="active" >Notifications</a>
         </li>
         <li>
-            <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin">Admin</a>
+            <a routerLink="/admin" routerLinkActive="active" *ngIf="getAdminStatus()">Admin</a>
         </li>
       </ul>
     </nav>

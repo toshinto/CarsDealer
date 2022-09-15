@@ -25,6 +25,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { AlertModule } from './_alert';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     ReactiveFormsModule,
     NoopAnimationsModule,
     JwPaginationModule,
-    MatDialogModule
+    MatDialogModule,
+    AlertModule
   ],
   providers: [
     AuthService, 

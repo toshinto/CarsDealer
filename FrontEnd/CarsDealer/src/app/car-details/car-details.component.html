@@ -1,4 +1,5 @@
 <div class="container-fluid">
+    <alert></alert>
      <ng-container *ngIf="car">
         <div class="row">
             <div class="col-lg-6">
@@ -15,7 +16,7 @@
                 <h2>Color: {{car.Color}}</h2>
                 <h2>City: {{car.City}}</h2>
                 <h2>HorsePower: {{car.HorsePower}}</h2>
-                <h2>Kilometeres: {{car.Kilometeres}</h2>
+                <h2>Kilometeres: {{car.Kilometeres}}</h2>
             </div>
         </div>
         <form [formGroup]="offerForm">

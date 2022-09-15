@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   logoutHandler(): void{
     localStorage.removeItem('username');
     this.authService.removeToken();
+    localStorage.removeItem('admin');
     this.router.navigate(['login']);
   }
 
@@ -53,6 +54,15 @@ export class HeaderComponent implements OnInit, OnDestroy{
     if(isAdmin == "Admin"){
       return true;
     }
+    return false;
+  }
+
+  getAdminStatus(): boolean{
+    var isAdmin = this.authService.getIsAdminStatus();
+    if(isAdmin === "Admin"){
+      return true;
+    }
+
     return false;
   }
 

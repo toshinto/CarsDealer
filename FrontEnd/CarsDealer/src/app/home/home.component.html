@@ -1,18 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-      <div class="card" style="width: 18rem;" *ngFor="let car of pageOfItems">
-        <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{car.Model}}</h5>
-          <p class="card-text">{{car.Description}}</p>
-          <a routerLink="/cars/{{car.Id}}" class="btn btn-primary">More Details</a>
-        </div>
+    <div class="card" style="width: 18rem;" *ngFor="let car of pageOfItems">
+      <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{car.Model}}</h5>
+        <p class="card-text">{{car.Description}}</p>
+        <a routerLink="/cars/{{car.Id}}" class="btn btn-primary">More Details</a>
+      </div>
     </div>
   </div>
   <div class="card-footer pb-0 pt-3">
-    <jw-pagination [items]="cars" [pageSize]="9" (changePage)="onChangePage($event)"></jw-pagination>
+    <jw-pagination [items]="cars" [pageSize]="12" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>
 </div>
-<label for="noCars" *ngIf="!pageOfItems">Please sign up or login.</label>
-</div>
-
-
