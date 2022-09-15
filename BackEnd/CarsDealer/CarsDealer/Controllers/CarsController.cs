@@ -188,11 +188,11 @@ namespace CarsDealer.Controllers
         }
 
         [HttpPost("MakeOffer")]
-        public void MakeOffer(OfferDto dto)
+        public bool MakeOffer(OfferDto dto)
         {
             var userId = this.User.GetId();
 
-            carService.SendOffer(dto, userId);
+            return carService.SendOffer(dto, userId);
         }
 
         [HttpGet("GetMyOffers")]
