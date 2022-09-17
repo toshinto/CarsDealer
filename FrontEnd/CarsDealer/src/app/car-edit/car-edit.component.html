@@ -7,7 +7,7 @@
         <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
         <div class="form-group">
           <label for="brand">Brand</label>
-          <input type="text" class="form-control" formControlName="Brand">
+          <input type="text" class="form-control" formControlName="Brand" placeholder="e.g. BMW">
         </div>
         <ng-container *ngIf="carForm.controls['Brand'].touched && carForm.controls['Brand'].invalid">
           <p *ngIf="carForm.controls['Brand'].errors?.['required']" class="error">Brand is required.</p>
@@ -16,7 +16,7 @@
         </ng-container>
         <div class="form-group">
           <label for="model">Model</label>
-          <input type="text" class="form-control" formControlName="Model">
+          <input type="text" class="form-control" formControlName="Model"  placeholder="e.g. M5">
         </div>
         <ng-container *ngIf="carForm.controls['Model'].touched && carForm.controls['Model'].invalid">
           <p *ngIf="carForm.controls['Model'].errors?.['required']" class="error">Model is required.</p>
@@ -69,7 +69,7 @@
             <p *ngIf="carForm.controls['Year'].errors?.['min']" class="error">Year must be atleast 1900.</p>
           </ng-container>
           <label for="city">City</label>
-          <input type="text" class="form-control" formControlName="City">
+          <input type="text" class="form-control" formControlName="City" placeholder="e.g. Burgas">
         </div>
         <ng-container *ngIf="carForm.controls['City'].touched && carForm.controls['City'].invalid">
           <p *ngIf="carForm.controls['City'].errors?.['required']" class="error">City is required.</p>
@@ -78,7 +78,7 @@
         </ng-container>
         <div>
           <label for="color">Color</label>
-          <input type="text" class="form-control" formControlName="Color">
+          <input type="text" class="form-control" formControlName="Color" placeholder="e.g. Black">
         </div>
         <ng-container *ngIf="carForm.controls['Color'].touched && carForm.controls['Color'].invalid">
           <p *ngIf="carForm.controls['Color'].errors?.['required']" class="error">Color is required.</p>
