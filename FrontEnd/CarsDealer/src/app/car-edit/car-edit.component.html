@@ -87,7 +87,7 @@
         </ng-container>
         <div>
           <label for="horsePower">HorsePower</label>
-          <input type="text" class="form-control" formControlName="HorsePower">
+          <input type="number" class="form-control" formControlName="HorsePower">
         </div>
         <ng-container *ngIf="carForm.controls['HorsePower'].touched && carForm.controls['HorsePower'].invalid">
           <p *ngIf="carForm.controls['HorsePower'].errors?.['required']" class="error">HorsePower is required.</p>
@@ -95,7 +95,7 @@
         </ng-container>
         <div>
           <label for="kilometeres">Kilometeres</label>
-          <input type="text" class="form-control" formControlName="Kilometeres">
+          <input type="number" class="form-control" formControlName="Kilometeres">
         </div>
         <ng-container *ngIf="carForm.controls['Kilometeres'].touched && carForm.controls['Kilometeres'].invalid">
           <p *ngIf="carForm.controls['Kilometeres'].errors?.['required']" class="error">Kilometeres is required.</p>
