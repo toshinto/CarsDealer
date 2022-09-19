@@ -42,5 +42,14 @@ namespace CarsDealer.Services.Implementation
                 .OrderByDescending(x => x.CreatedOn)
                 .ToArray();
         }
+
+        public void DeleteNotification(int notificationId)
+        {
+            var notification = _db.Notifications
+                .Where(x => x.Id == notificationId).FirstOrDefault();
+
+            _db.Notifications.Remove(notification);
+            _db.SaveChanges();
+        }
     }
 }

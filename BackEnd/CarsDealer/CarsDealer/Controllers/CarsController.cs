@@ -221,5 +221,11 @@ namespace CarsDealer.Controllers
             var userId = this.User.GetId();
             return notificationService.GetMyNotifications(userId);
         }
+
+        [HttpDelete("DeleteNotification/{notificationId}")]
+        public void DeleteNotification(int notificationId)
+        {
+            notificationService.DeleteNotification(notificationId);
+        }
     }
 }
