@@ -30,6 +30,7 @@ export class CarService {
   private declineOfferUrl = environment.apiUrl + '/api/cars/DeclineOffer';
   private notificationListUrl = environment.apiUrl + '/api/cars/GetMyNotifications';
   private makeOfferUrl = environment.apiUrl + '/api/cars/MakeOffer';
+  private deleteNotificationUrl = environment.apiUrl + '/api/cars/DeleteNotification';
   protected currentUserName: string = '';
   constructor(private http: HttpClient) { }
   isUserAdminA: boolean;
@@ -100,6 +101,10 @@ export class CarService {
 
   makeOffer(data: any){
     return this.http.post(this.makeOfferUrl, data);
+  }
+
+  deleteNotifiocation(id: number){
+    return this.http.delete(this.deleteNotificationUrl + '/' + id);
   }
 
 }

@@ -3,3 +3,8 @@ img{
     height: 200px;
     max-width: 100%;
 }
+.button{
+    padding: 0;
+border: none;
+background: none;
+}

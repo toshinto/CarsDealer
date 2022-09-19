@@ -21,5 +21,10 @@ export class NotificationComponent implements OnInit {
     })
   }
 
+  deleteNotification(id: number){
+    this.carService.deleteNotifiocation(id).subscribe(() => {
+      this.fetchNotifications();
+    })
+  }
 
 }
