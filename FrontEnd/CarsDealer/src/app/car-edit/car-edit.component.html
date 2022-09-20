@@ -6,7 +6,7 @@
       <form [formGroup]="carForm">
         <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
         <div class="form-group">
-          <label for="brand">Brand</label>
+          <label for="brand">Brand  <span class="star">*</span></label>
           <input type="text" class="form-control" formControlName="Brand" placeholder="e.g. BMW">
         </div>
         <ng-container *ngIf="carForm.controls['Brand'].touched && carForm.controls['Brand'].invalid">
@@ -15,7 +15,7 @@
             and atleast 2 charaters.</p>
         </ng-container>
         <div class="form-group">
-          <label for="model">Model</label>
+          <label for="model">Model  <span class="star">*</span></label>
           <input type="text" class="form-control" formControlName="Model"  placeholder="e.g. M5">
         </div>
         <ng-container *ngIf="carForm.controls['Model'].touched && carForm.controls['Model'].invalid">
@@ -24,14 +24,14 @@
             and atleast 2 charaters.</p>
         </ng-container>
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="description">Description  <span class="star">*</span></label>
           <textarea type="text" class="form-control" formControlName="Description"></textarea>
         </div>
         <ng-container *ngIf="carForm.controls['Description'].touched && carForm.controls['Description'].invalid">
           <p *ngIf="carForm.controls['Description'].errors?.['required']" class="error">Description is required.</p>
         </ng-container>
         <p class="field field-icon">
-          <label for="fuel">Fuel type: </label>
+          <label for="fuel">Fuel type:  <span class="star">*</span></label>
           <select name="fuel" id="fuel" class="fuel" formControlName="Fuel">
             <option value="0">Gasoline</option>
             <option value="1">Diesel</option>
@@ -42,7 +42,7 @@
           <p *ngIf="carForm.controls['Fuel'].errors?.['required']" class="error">Fuel is required.</p>
         </ng-container>
         <p class="field field-icon">
-          <label for="gearLever">Gear lever: </label>
+          <label for="gearLever">Gear lever:  <span class="star">*</span></label>
           <select name="gearLever" id="gearLever" class="gearLever" formControlName="GearLever">
             <option value="0">Manual</option>
             <option value="1">Automatic</option>
@@ -52,7 +52,7 @@
           <p *ngIf="carForm.controls['GearLever'].errors?.['required']" class="error">GearLever is required.</p>
         </ng-container>
         <div>
-          <label for="price">Price</label>
+          <label for="price">Price  <span class="star">*</span></label>
           <input type="number" class="form-control" formControlName="Price">
         </div>
         <ng-container *ngIf="carForm.controls['Price'].touched && carForm.controls['Price'].invalid">
@@ -60,7 +60,7 @@
           <p *ngIf="carForm.controls['Price'].errors?.['min']" class="error">Price must be positive number.</p>
         </ng-container>
         <div>
-          <label for="price">Year</label>
+          <label for="price">Year  <span class="star">*</span></label>
           <input type="number" class="form-control" formControlName="Year">
         </div>
         <div>
@@ -68,7 +68,7 @@
             <p *ngIf="carForm.controls['Year'].errors?.['required']" class="error">Year is required.</p>
             <p *ngIf="carForm.controls['Year'].errors?.['min']" class="error">Year must be atleast 1900.</p>
           </ng-container>
-          <label for="city">City</label>
+          <label for="city">City  <span class="star">*</span></label>
           <input type="text" class="form-control" formControlName="City" placeholder="e.g. Burgas">
         </div>
         <ng-container *ngIf="carForm.controls['City'].touched && carForm.controls['City'].invalid">
@@ -77,7 +77,7 @@
             contains only letters.</p>
         </ng-container>
         <div>
-          <label for="color">Color</label>
+          <label for="color">Color  <span class="star">*</span></label>
           <input type="text" class="form-control" formControlName="Color" placeholder="e.g. Black">
         </div>
         <ng-container *ngIf="carForm.controls['Color'].touched && carForm.controls['Color'].invalid">
@@ -86,7 +86,7 @@
             and contains only letters.</p>
         </ng-container>
         <div>
-          <label for="horsePower">HorsePower</label>
+          <label for="horsePower">HorsePower  <span class="star">*</span></label>
           <input type="number" class="form-control" formControlName="HorsePower">
         </div>
         <ng-container *ngIf="carForm.controls['HorsePower'].touched && carForm.controls['HorsePower'].invalid">
@@ -94,7 +94,7 @@
           <p *ngIf="carForm.controls['HorsePower'].errors?.['min']" class="error">HorsePower must be a positive number.</p>
         </ng-container>
         <div>
-          <label for="kilometeres">Kilometeres</label>
+          <label for="kilometeres">Kilometeres  <span class="star">*</span></label>
           <input type="number" class="form-control" formControlName="Kilometeres">
         </div>
         <ng-container *ngIf="carForm.controls['Kilometeres'].touched && carForm.controls['Kilometeres'].invalid">

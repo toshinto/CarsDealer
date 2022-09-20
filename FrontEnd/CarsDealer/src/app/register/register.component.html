@@ -4,7 +4,7 @@
         <div class="col-lg-4">
             <form [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Username</label>
+                  <label for="exampleInputEmail1">Username <span class="star">*</span></label>
                   <input type="text" required class="form-control" formControlName="username">
                 </div>
                 <ng-container
@@ -13,7 +13,7 @@
                     <p *ngIf="registerForm.controls['username'].errors?.['pattern']" class="error">You username should start with letter and must be atleast 3 characters long</p>
                 </ng-container>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
+                    <label for="exampleInputEmail1">Email <span class="star">*</span></label>
                     <input type="email" class="form-control" required formControlName="email">
                 </div>
                 <ng-container
@@ -22,7 +22,7 @@
                     <p *ngIf="registerForm.controls['email'].errors?.['pattern']" class="error">Invalid email</p>
                 </ng-container>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
+                  <label for="exampleInputPassword1">Password <span class="star">*</span></label>
                   <input type="password" class="form-control" required formControlName="password">
                 </div>
                 <ng-container
