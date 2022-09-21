@@ -1,5 +1,6 @@
 ﻿using CarsDealer.Data;
 using CarsDealer.DTOS;
+using CarsDealer.Error;
 using CarsDealer.Infrastructure.Extensions;
 using CarsDealer.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -59,14 +60,19 @@ namespace CarsDealer.Controllers
             var isValidImageType = file.IsValidImageFile();
             var isValdImageSize = file.ValidateImageSize();
 
+            ApiError apiError = new ApiError();
+
             if (!isValidImageType)
             {
-                throw new Exception("File must be jpg, jpeg or png.");
+                apiError.ErrorCode = 500;
+                apiError.ErrorMessage = "File must be jpg, jpeg or png.";
+                throw new Exception(apiError.ErrorMessage);
             }
 
             if (!isValdImageSize)
             {
-                throw new Exception("File must be below 1MB");
+                apiError.ErrorMessage = "File must be below 1MB";
+                throw new Exception(apiError.ErrorMessage);
             }
 
             var userId = this.User.GetId();

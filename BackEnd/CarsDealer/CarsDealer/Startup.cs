@@ -124,6 +124,8 @@ namespace CarsDealer
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.ConfigureExceptionHandler();
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -140,6 +142,8 @@ namespace CarsDealer
             });
 
             app.ApplyMigrations();
+
+            
         }
     }
 }
