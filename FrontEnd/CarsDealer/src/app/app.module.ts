@@ -26,6 +26,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AlertModule } from './_alert';
+import { HttpErrorInterceptor } from './http-error.interceptor';
 
 
 @NgModule({
@@ -64,7 +65,12 @@ import { AlertModule } from './_alert';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -44,7 +44,6 @@ export class CarComponent implements OnInit {
   createCar(){
     this.formData.append('details', JSON.stringify(this.carForm.value));
     this.carService.create(this.formData).subscribe(res => {
-      console.log(res);
       this.router.navigate(['notifications']);
     })
   }

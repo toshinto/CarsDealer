@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car';
@@ -8,6 +8,8 @@ import { UserAdminDto } from 'src/DTOS/UserAdminDto';
 import { ApproveDisapprove } from 'src/DTOS/ApproveDisapproveDto';
 import { NotificationListDto } from 'src/DTOS/NotificationListDto';
 import { OfferListDto } from 'src/DTOS/OfferListDto';
+import { catchError} from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
