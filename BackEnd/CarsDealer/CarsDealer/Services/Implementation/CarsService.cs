@@ -169,7 +169,7 @@ namespace CarsDealer.Services.Implementation
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                cars = cars.Where(x => x.Brand.ToLower().Contains(searchTerm.ToLower())).ToArray();
+                cars = cars.Where(x => x.Brand.ToLower().Contains(searchTerm.ToLower()) || x.Model.ToLower().Contains(searchTerm.ToLower())).ToArray();
             }
 
             foreach(var car in cars)
@@ -310,7 +310,7 @@ namespace CarsDealer.Services.Implementation
                 return false;
             }
 
-            if (car.Brand != model.Brand || car.Model != model.Model || car.Color != model.Color || car.Fuel != (Fuel)model.Fuel || car.GearLever != (GearLever)model.GearLever || car.Price != model.Price || car.Year != model.Year || car.Description != model.Description || car.City != model.City || car.Kilometeres != model.Kilometeres || car.HorsePower != model.HorsePower)
+            if (car.Brand != model.Brand || car.Model != model.Model || car.Color != model.Color || car.Description != model.Description || car.City != model.City)
             {
                 var message = $"Your car must be approved by Admin because you have changed car picture or details";
 
