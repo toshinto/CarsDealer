@@ -54,14 +54,14 @@ namespace CarsDealer.Controllers
 
             if (user == null)
             {
-                throw new Exception("Invalid username or password");
+                throw new Exception("Invalid username or password.");
             }
 
             var passwordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
 
             if (!passwordValid)
             {
-                throw new Exception("Invalid username or password");
+                throw new Exception("Invalid username or password.");
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();

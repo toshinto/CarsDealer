@@ -141,7 +141,7 @@ namespace CarsDealer.Controllers
 
                 if (!isValdImageSize)
                 {
-                    throw new Exception("File must be below 1MB");
+                    throw new Exception("File must be below 1MB.");
                 }
 
                 var fileType = file.GetFileType();
