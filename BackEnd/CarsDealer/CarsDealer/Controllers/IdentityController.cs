@@ -44,7 +44,7 @@ namespace CarsDealer.Controllers
                 return Ok();
             }
 
-            return BadRequest(result.Errors);
+            throw new Exception("Username or email is already taken");
         }
 
         [HttpPost("Login")]
@@ -54,14 +54,14 @@ namespace CarsDealer.Controllers
 
             if (user == null)
             {
-                return Unauthorized();
+                throw new Exception("Invalid username or password");
             }
 
             var passwordValid = await this.userManager.CheckPasswordAsync(user, model.Password);
 
             if (!passwordValid)
             {
-                return Unauthorized();
+                throw new Exception("Invalid username or password");
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
