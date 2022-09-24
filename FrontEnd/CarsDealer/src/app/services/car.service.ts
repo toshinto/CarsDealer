@@ -48,8 +48,8 @@ export class CarService {
     return this.http.get<UserAdminDto>(this.isUserAdmin);
   }
 
-  getAllCars(): Observable<Array<Car>>{
-    return this.http.get<Array<Car>>(this.allCars);
+  getAllCars(searchValue: string = ''): Observable<Array<Car>>{
+    return this.http.get<Array<Car>>(this.allCars + '/' + searchValue);
   }
 
   getMyCars(): Observable<Array<Car>>{

@@ -4,6 +4,8 @@ import { Car } from '../models/car';
 import { CarService } from '../services/car.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator'; 
 import { MatTableDataSource } from '@angular/material/table';
+import { FormControl } from '@angular/forms';
+import { debounceTime, mergeMap, startWith, switchMap } from 'rxjs';
 
 
 
@@ -15,11 +17,17 @@ import { MatTableDataSource } from '@angular/material/table';
 export class HomeComponent implements OnInit {
   cars: Array<Car>;
   pageOfItems: Array<any>;
+  searchControl = new FormControl();
   constructor(private http: HttpClient, private carService: CarService) { }
   ngOnInit() {
-    this.carService.getAllCars().subscribe(cars =>{ 
-      this.cars = cars;
-    })
+    this.searchControl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(300),
+      switchMap(searchValue => this.carService.getAllCars(searchValue))
+      )
+      .subscribe(cars =>{
+        this.cars = cars;
+    });
   }
 
   onChangePage(pageOfItems: Array<any>){

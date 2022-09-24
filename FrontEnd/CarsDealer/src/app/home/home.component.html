@@ -1,9 +1,13 @@
 <div class="container-fluid">
+  <form>
+    Search By brand <input [formControl]="searchControl" type="text"/>
+  </form>
   <div class="row">
     <div class="card" style="width: 18rem;" *ngFor="let car of pageOfItems">
       <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{car.Model}}</h5>
+        <h5 class="card-title">{{car.Brand}}</h5>
+        <h4 class="card-title">{{car.Model}}</h4>
         <p class="card-text">{{car.Description}}</p>
         <a routerLink="/cars/{{car.Id}}" class="btn btn-primary">More Details</a>
       </div>
