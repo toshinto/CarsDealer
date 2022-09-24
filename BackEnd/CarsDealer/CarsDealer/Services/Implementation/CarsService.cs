@@ -144,7 +144,7 @@ namespace CarsDealer.Services.Implementation
 
   
 
-        public async Task<CarsListDto[]> GetAllCars()
+        public CarsListDto[] GetAllCars(string searchTerm = null)
         {
             var cars = _db.Cars
                 .Where(x => x.IsDeleted == false && x.IsApproved == true)
@@ -165,9 +165,14 @@ namespace CarsDealer.Services.Implementation
                     
                 })
                 .OrderByDescending(x => x.CreatedOn)
-                .ToArrayAsync();
+                .ToArray();
 
-            foreach(var car in cars.Result)
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                cars = cars.Where(x => x.Brand.ToLower().Contains(searchTerm.ToLower())).ToArray();
+            }
+
+            foreach(var car in cars)
             {
                 var bytes = _imageService.GetImage(car.Id, car.ImageFileType);
 
@@ -176,7 +181,7 @@ namespace CarsDealer.Services.Implementation
                 car.ImageBase64 = imageBase64String;
             }
 
-            return await cars;
+            return cars;
         }
 
         public CarDetailsDto GetCarDetails(int carId)

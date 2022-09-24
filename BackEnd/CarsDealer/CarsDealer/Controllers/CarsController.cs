@@ -38,10 +38,10 @@ namespace CarsDealer.Controllers
         }
 
         [Authorize]
-        [HttpGet("GetAllCars")]
-        public async Task<CarsListDto[]> GetAllCars()
+        [HttpGet("GetAllCars/{searchTerm?}")]
+        public CarsListDto[] GetAllCars(string searchTerm)
         {
-            return await carService.GetAllCars();
+            return carService.GetAllCars(searchTerm);
         }
 
         [Authorize]
