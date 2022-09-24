@@ -4,32 +4,36 @@
         <div class="col-lg-4">
             <form [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Username <span class="star">*</span></label>
-                  <input type="text" required class="form-control" formControlName="username">
+                    <label for="exampleInputEmail1">Username <span class="star">*</span></label>
+                    <input type="text" required class="form-control" formControlName="username">
                 </div>
                 <ng-container
                     *ngIf="registerForm.controls['username'].touched && registerForm.controls['username'].invalid">
-                    <p *ngIf="registerForm.controls['username'].errors?.['required']" class="error">Username is required</p>
-                    <p *ngIf="registerForm.controls['username'].errors?.['pattern']" class="error">You username should start with letter and must be atleast 3 characters long</p>
+                    <p *ngIf="registerForm.controls['username'].errors?.['required']" class="error">Username is required
+                    </p>
+                    <p *ngIf="registerForm.controls['username'].errors?.['pattern']" class="error">You username should
+                        start with letter and must be atleast 3 characters long</p>
                 </ng-container>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email <span class="star">*</span></label>
                     <input type="email" class="form-control" required formControlName="email">
                 </div>
-                <ng-container
-                    *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
+                <ng-container *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
                     <p *ngIf="registerForm.controls['email'].errors?.['required']" class="error">Email is required</p>
                     <p *ngIf="registerForm.controls['email'].errors?.['pattern']" class="error">Invalid email</p>
                 </ng-container>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password <span class="star">*</span></label>
-                  <input type="password" class="form-control" required formControlName="password">
+                    <label for="exampleInputPassword1">Password <span class="star">*</span></label>
+                    <input type="password" class="form-control" required formControlName="password">
                 </div>
                 <ng-container
                     *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].invalid">
-                    <p *ngIf="registerForm.controls['password'].errors?.['required']" class="error">Pasword is required</p>
-                    <p *ngIf="registerForm.controls['password'].errors?.['minlength']" class="error">Pasword must be atleast 4 characters/digit long</p>
+                    <p *ngIf="registerForm.controls['password'].errors?.['required']" class="error">Pasword is required
+                    </p>
+                    <p *ngIf="registerForm.controls['password'].errors?.['minlength']" class="error">Pasword must be
+                        atleast 4 characters/digit long</p>
                 </ng-container>
+                <alert></alert>
                 <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
             </form>
         </div>

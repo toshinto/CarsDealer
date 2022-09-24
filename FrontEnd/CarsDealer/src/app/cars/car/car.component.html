@@ -107,6 +107,7 @@
           <label for="file">Choose File <span class="star">*</span></label><br /> <input type="file" id="file"
             (change)="uploadFiles($any($event.target).files)" required formControlName="Picture">
         </div>
+        <alert></alert>
         <button type="submit" [disabled]="carForm.invalid" class="btn btn-primary">Create car</button>
       </form>
     </div>
