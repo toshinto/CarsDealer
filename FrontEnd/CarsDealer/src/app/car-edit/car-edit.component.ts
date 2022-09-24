@@ -52,12 +52,12 @@ export class CarEditComponent implements OnInit {
           'Description': [this.car.Description, [Validators.required]],
           'Fuel': [this.car.Fuel, [Validators.required]],
           'GearLever': [this.car.GearLever, [Validators.required]],
-          'Price': [this.car.Price, [Validators.required, Validators.min(1)]],
-          'Year': [this.car.Year,  [Validators.required, Validators.min(1900)]],
+          'Price': [this.car.Price, [Validators.required, Validators.min(1), Validators.max(2000000)]],
+          'Year': [this.car.Year,  [Validators.required, Validators.min(1900), Validators.max(2022)]],
           'City': [this.car.City, [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
           'Color': [this.car.Color, [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
-          'Kilometeres': [this.car.Kilometeres, [Validators.required, Validators.min(0)]],
-          'HorsePower': [this.car.HorsePower, [Validators.required, Validators.min(1)]]
+          'Kilometeres': [this.car.Kilometeres, [Validators.required, Validators.min(0), Validators.max(10000000)]],
+          'HorsePower': [this.car.HorsePower, [Validators.required, Validators.min(1), Validators.max(1000)]]
         })
       });
     })

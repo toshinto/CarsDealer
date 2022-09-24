@@ -36,6 +36,8 @@
             <option value="0">Gasoline</option>
             <option value="1">Diesel</option>
             <option value="2">Electric</option>
+            <option value="3">Gas/Gasoline</option>
+            <option value="4">Hybrid</option>
           </select>
         </p>
         <ng-container *ngIf="carForm.controls['Fuel'].touched && carForm.controls['Fuel'].invalid">
@@ -58,6 +60,7 @@
         <ng-container *ngIf="carForm.controls['Price'].touched && carForm.controls['Price'].invalid">
           <p *ngIf="carForm.controls['Price'].errors?.['required']" class="error">Price is required.</p>
           <p *ngIf="carForm.controls['Price'].errors?.['min']" class="error">Price must be positive number.</p>
+          <p *ngIf="carForm.controls['Price'].errors?.['max']" class="error">Price can be max 2 000 000.</p>
         </ng-container>
         <div>
           <label for="price">Year  <span class="star">*</span></label>
@@ -67,6 +70,7 @@
           <ng-container *ngIf="carForm.controls['Year'].touched && carForm.controls['Year'].invalid">
             <p *ngIf="carForm.controls['Year'].errors?.['required']" class="error">Year is required.</p>
             <p *ngIf="carForm.controls['Year'].errors?.['min']" class="error">Year must be atleast 1900.</p>
+            <p *ngIf="carForm.controls['Year'].errors?.['max']" class="error">Year can be max 2022.</p>
           </ng-container>
           <label for="city">City  <span class="star">*</span></label>
           <input type="text" class="form-control" formControlName="City" placeholder="e.g. Burgas">
@@ -92,6 +96,7 @@
         <ng-container *ngIf="carForm.controls['HorsePower'].touched && carForm.controls['HorsePower'].invalid">
           <p *ngIf="carForm.controls['HorsePower'].errors?.['required']" class="error">HorsePower is required.</p>
           <p *ngIf="carForm.controls['HorsePower'].errors?.['min']" class="error">HorsePower must be a positive number.</p>
+          <p *ngIf="carForm.controls['HorsePower'].errors?.['max']" class="error">HorsePower can be max 1000 HP.</p>
         </ng-container>
         <div>
           <label for="kilometeres">Kilometeres  <span class="star">*</span></label>
@@ -100,6 +105,7 @@
         <ng-container *ngIf="carForm.controls['Kilometeres'].touched && carForm.controls['Kilometeres'].invalid">
           <p *ngIf="carForm.controls['Kilometeres'].errors?.['required']" class="error">Kilometeres is required.</p>
           <p *ngIf="carForm.controls['Kilometeres'].errors?.['min']" class="error">Kilometers can not be negative number.</p>
+          <p *ngIf="carForm.controls['Kilometeres'].errors?.['max']" class="error">Kilometers can be max 10000000.</p>
         </ng-container>
         <div class="form-group">
           <label for="file">Choose File</label><br /> <input type="file" id="file"

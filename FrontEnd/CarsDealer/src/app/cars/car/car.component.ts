@@ -20,12 +20,12 @@ export class CarComponent implements OnInit {
       'Description': ['', [Validators.required]],
       'Fuel': ['', [Validators.required]],
       'GearLever': ['', [Validators.required]],
-      'Price': ['', [Validators.required, Validators.min(1)]],
-      'Year': ['', [Validators.required, Validators.min(1900)]],
+      'Price': ['', [Validators.required, Validators.min(1), Validators.max(2000000)]],
+      'Year': ['', [Validators.required, Validators.min(1900), Validators.max(2022)]],
       'City': ['', [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
       'Color': ['', [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z]/)]],
-      'HorsePower': ['', [Validators.required, Validators.min(1)]],
-      'Kilometeres': ['', [Validators.required, Validators.min(0)]],
+      'HorsePower': ['', [Validators.required, Validators.min(1), Validators.max(1000)]],
+      'Kilometeres': ['', [Validators.required, Validators.min(0), Validators.max(10000000)]],
       'Picture': ['', [Validators.required]]
     })
     

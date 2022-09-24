@@ -38,7 +38,10 @@ export class CarService {
   isUserAdminA: boolean;
 
   create(data: any): Observable<Car>{
-    return this.http.post<Car>(this.carPath, data);
+    return this.http.post<Car>(this.carPath, data)
+    .pipe(catchError(err => {
+      return throwError(err);
+    }));
   }
 
   isAdmin(): Observable<UserAdminDto>{

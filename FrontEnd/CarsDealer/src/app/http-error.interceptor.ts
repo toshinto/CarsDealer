@@ -4,7 +4,7 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor, HttpErrorResponse} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import {throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AlertService } from './_alert';
@@ -18,9 +18,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             .pipe(
                 catchError((error: HttpErrorResponse) => {
                     const errorMessage = this.setError(error);
-                    console.log(error);
-                    this.alert.error(error.error.message);
-                    return throwError(errorMessage);
+                    alert(errorMessage);
+                    return throwError(error);
                 })
             );
     }
@@ -32,11 +31,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = error.error.message;
       } else {
           // server side error
-          if (error.status!==0) {
+          if (error.status != 0) {
               errorMessage = error.error.errorMessage;
           }
       }
-      this.alert.error(errorMessage);
       return errorMessage;
   }
 }

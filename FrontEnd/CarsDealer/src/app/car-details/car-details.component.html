@@ -19,7 +19,8 @@
                 <h2>Kilometeres: {{car.Kilometeres}}</h2>
             </div>
         </div>
-        <form [formGroup]="offerForm">
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" (click)="isClicked()">Send an offer
+        <form [formGroup]="offerForm" *ngIf="isOfferShown">
             <div>
                 <label for="price">Price</label>
                 <input type="number" class="form-control" formControlName="Price">

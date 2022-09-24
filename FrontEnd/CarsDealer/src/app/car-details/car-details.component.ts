@@ -15,6 +15,7 @@ export class CarDetailsComponent implements OnInit {
   car: Car;
   offerForm: FormGroup;
   offer: boolean = false;
+  isOfferShown: boolean = false;
   constructor(private route: ActivatedRoute, private carService: CarService, private fb: FormBuilder, private alertService: AlertService) {
     this.route.params.subscribe(res => {
       this.id = res['id'];
@@ -45,6 +46,10 @@ export class CarDetailsComponent implements OnInit {
         this.alertService.error("You are the owner of this car, so you can not send offers to yourself.")
       }
     });
+  }
+
+  isClicked(){
+    this.isOfferShown = !this.isOfferShown;
   }
 
 }
