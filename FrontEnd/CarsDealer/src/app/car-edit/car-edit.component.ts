@@ -66,7 +66,7 @@ export class CarEditComponent implements OnInit {
   updateCar(){
     this.formData.append('details', JSON.stringify(this.carForm.value));
     this.carService.editCar(this.formData).subscribe(res => {
-      this.router.navigate(["notifications"]);
+      this.router.navigate(["myCars"]);
     })
   }
 }

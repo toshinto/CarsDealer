@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <form>
-    Search By brand <input [formControl]="searchControl" type="text"/>
+    Search <input [formControl]="searchControl" type="text" placeholder="Search by brand or model"/>
   </form>
   <div class="row">
     <div class="card" style="width: 18rem;" *ngFor="let car of pageOfItems">
