@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './admin.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuardService } from './auth-guard.service';
 import { CarDetailsComponent } from './car-details/car-details.component';
@@ -38,7 +39,7 @@ const routes: Routes = [
     path: 'myCars', component: MycarsComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'admin', component: AdminComponent, canActivate: [AuthGuardService]
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuardService, AdminGuard]
   },
   {
     path: 'cars/:id', component: CarDetailsComponent, canActivate: [AuthGuardService]
