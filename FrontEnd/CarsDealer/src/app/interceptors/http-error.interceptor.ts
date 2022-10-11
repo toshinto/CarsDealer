@@ -7,7 +7,7 @@ import {
 import { EMPTY, Observable } from 'rxjs';
 import {throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AlertService } from './_alert';
+import { AlertService } from 'src/app/_alert';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {

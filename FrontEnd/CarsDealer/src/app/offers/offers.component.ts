@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationListDto } from 'src/DTOS/NotificationListDto';
-import { OfferListDto } from 'src/DTOS/OfferListDto';
+import { NotificationListDto } from 'src/app/interfaces/NotificationListDto';
+import { OfferListDto } from 'src/app/interfaces/OfferListDto';
 import { CarService } from '../services/car.service';
 
 @Component({

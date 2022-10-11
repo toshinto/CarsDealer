@@ -4,10 +4,10 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car';
 import { map, switchMap } from 'rxjs/operators';
-import { UserAdminDto } from 'src/DTOS/UserAdminDto';
-import { ApproveDisapprove } from 'src/DTOS/ApproveDisapproveDto';
-import { NotificationListDto } from 'src/DTOS/NotificationListDto';
-import { OfferListDto } from 'src/DTOS/OfferListDto';
+import { UserAdminDto } from 'src/app/interfaces/UserAdminDto';
+import { ApproveDisapprove } from 'src/app/interfaces/ApproveDisapproveDto';
+import { NotificationListDto } from 'src/app/interfaces/NotificationListDto';
+import { OfferListDto } from 'src/app/interfaces/OfferListDto';
 import { catchError} from 'rxjs/operators';
 import { throwError } from 'rxjs';
 

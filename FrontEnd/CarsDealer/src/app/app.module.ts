@@ -11,7 +11,6 @@ import { AuthService } from './services/auth.service';
 import { CarComponent } from './cars/car/car.component';
 import { CarService } from './services/car.service';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { TokenInterceptorService } from './token-interceptor.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -26,7 +25,8 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AlertModule } from './_alert';
-import { HttpErrorInterceptor } from './http-error.interceptor';
+import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 
 @NgModule({

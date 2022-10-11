@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationListDto } from 'src/DTOS/NotificationListDto';
+import { NotificationListDto } from 'src/app/interfaces/NotificationListDto';
 import { CarService } from '../services/car.service';
 
 @Component({

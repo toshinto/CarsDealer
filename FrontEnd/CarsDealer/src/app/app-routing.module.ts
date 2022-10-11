@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminGuard } from './admin.guard';
+import { AdminGuard } from './services/admin.guard';
 import { AdminComponent } from './admin/admin.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import { CarComponent } from './cars/car/car.component';
