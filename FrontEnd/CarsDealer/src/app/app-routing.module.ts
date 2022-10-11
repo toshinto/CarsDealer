@@ -7,12 +7,13 @@ import { CarDetailsComponent } from './car-details/car-details.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import { CarComponent } from './cars/car/car.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { MycarsComponent } from './mycars/mycars.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NotificationComponent } from './notification/notification.component';
 import { OffersComponent } from './offers/offers.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AuthRoutingModule } from './auth/auth-routing.module';
 
 const routes: Routes = [
   {
@@ -22,12 +23,6 @@ const routes: Routes = [
   },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuardService]
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'register', component: RegisterComponent
   },
   {
     path: 'create', component: CarComponent, canActivate: [AuthGuardService]
@@ -58,8 +53,4 @@ const routes: Routes = [
   }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const AppRoutingModule = RouterModule.forRoot(routes);

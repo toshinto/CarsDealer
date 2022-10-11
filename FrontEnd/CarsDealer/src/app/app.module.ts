@@ -5,8 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
 import { CarComponent } from './cars/car/car.component';
 import { CarService } from './services/car.service';
@@ -24,16 +22,15 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { AlertModule } from './_alert';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { AuthModule } from './auth/auth.module';
+import { AlertModule } from './_alert';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     CarComponent,
     NotFoundComponent,
     HeaderComponent,
@@ -46,7 +43,6 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
     NotificationComponent,
     OffersComponent,
     ConfirmDialogComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -56,8 +52,9 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
     NoopAnimationsModule,
     JwPaginationModule,
     MatDialogModule,
+    AuthModule,
+    FormsModule,
     AlertModule,
-    FormsModule
   ],
   providers: [
     AuthService, 
@@ -72,6 +69,8 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
       useClass: HttpErrorInterceptor,
       multi: true,
     },
+  ],
+  exports:[
   ],
   bootstrap: [AppComponent]
 })
