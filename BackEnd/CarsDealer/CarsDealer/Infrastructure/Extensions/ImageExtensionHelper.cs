@@ -11,7 +11,7 @@ namespace CarsDealer.Infrastructure.Extensions
 
         public static bool IsValidImageFile(this IFormFile file)
         {
-            var extension = Path.GetExtension(file.FileName).TrimStart('.');
+            var extension = Path.GetExtension(file.FileName).TrimStart('.').ToLower();
 
             if (!allowedExtensions.Any(x => extension.EndsWith(x)))
             {
