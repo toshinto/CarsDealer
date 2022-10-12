@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ConfirmDialogComponent, ConfirmDialogModel } from '../../../../confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent, ConfirmDialogModel } from '../../../../common/confirm-dialog/confirm-dialog.component';
 import { Car } from '../../../../interfaces/car';
 import { CarService } from '../../../../services/car.service';
 
