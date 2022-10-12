@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/interfaces/car';
 import { CarService } from 'src/app/services/car.service';
-import { AlertService } from 'src/app/_alert';
+import { AlertService } from 'src/app/feature/_alert';
 
 @Component({
   selector: 'app-car-details',

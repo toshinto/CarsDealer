@@ -24,7 +24,7 @@ import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.c
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { AuthModule } from './auth/auth.module';
-import { AlertModule } from './_alert';
+import { AlertModule } from './feature/_alert';
 import { CarsModule } from './feature/cars/cars/cars.module';
 import { AdminModule } from './feature/admin/admin.module';
 

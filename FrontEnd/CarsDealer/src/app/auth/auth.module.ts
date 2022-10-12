@@ -4,7 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertModule } from '../_alert';
+import { AlertModule } from '../feature/_alert';
 
 @NgModule({
   declarations: [
