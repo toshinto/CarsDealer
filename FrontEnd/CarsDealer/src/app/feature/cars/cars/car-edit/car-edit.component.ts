@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Car } from '../models/car';
-import { CarService } from '../services/car.service';
+import { Car } from '../../../../interfaces/car';
+import { CarService } from '../../../../services/car.service';
 
 @Component({
   selector: 'app-car-edit',

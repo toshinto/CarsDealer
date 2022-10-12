@@ -13,5 +13,4 @@ export interface Car{
     ImageBase64: string,
     HorsePower: number,
     Kilometeres: number,
-
 }

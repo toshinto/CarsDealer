@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { CarService } from '../services/car.service';
+import { AuthService } from '../../services/auth.service';
+import { CarService } from '../../services/car.service';
 import { take } from 'rxjs/operators';
 
 @Component({

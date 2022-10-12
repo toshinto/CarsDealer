@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Car } from '../models/car';
-import { CarService } from '../services/car.service';
-import { AlertService } from '../_alert';
+import { Car } from 'src/app/interfaces/car';
+import { CarService } from 'src/app/services/car.service';
+import { AlertService } from 'src/app/_alert';
 
 @Component({
   selector: 'app-car-details',

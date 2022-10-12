@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Car } from '../models/car';
-import { CarService } from '../services/car.service';
+import { Car } from '../../interfaces/car';
+import { CarService } from '../../services/car.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator'; 
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl } from '@angular/forms';

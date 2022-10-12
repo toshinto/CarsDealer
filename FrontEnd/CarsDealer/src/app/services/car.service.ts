@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Car } from '../models/car';
+import { Car } from '../interfaces/car';
 import { map, switchMap } from 'rxjs/operators';
 import { UserAdminDto } from 'src/app/interfaces/UserAdminDto';
 import { ApproveDisapprove } from 'src/app/interfaces/ApproveDisapproveDto';

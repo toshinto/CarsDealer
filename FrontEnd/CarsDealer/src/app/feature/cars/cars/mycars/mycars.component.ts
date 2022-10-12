@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ConfirmDialogComponent, ConfirmDialogModel } from '../confirm-dialog/confirm-dialog.component';
-import { Car } from '../models/car';
-import { CarService } from '../services/car.service';
+import { ConfirmDialogComponent, ConfirmDialogModel } from '../../../../confirm-dialog/confirm-dialog.component';
+import { Car } from '../../../../interfaces/car';
+import { CarService } from '../../../../services/car.service';
 
 @Component({
   selector: 'app-mycars',

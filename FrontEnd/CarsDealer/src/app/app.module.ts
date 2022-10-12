@@ -6,18 +6,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
-import { CarComponent } from './cars/car/car.component';
+import { CarComponent } from './feature/cars/cars/car/car.component';
 import { CarService } from './services/car.service';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { MycarsComponent } from './mycars/mycars.component';
-import { CarDetailsComponent } from './car-details/car-details.component';
-import { CarEditComponent } from './car-edit/car-edit.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { HomeComponent } from './common/home/home.component';
+import { MycarsComponent } from './feature/cars/cars/mycars/mycars.component';
+import { CarEditComponent } from './feature/cars/cars/car-edit/car-edit.component';
 import { AdminComponent } from './admin/admin.component';
-import { NotificationComponent } from './notification/notification.component';
-import { OffersComponent } from './offers/offers.component';
+import { NotificationComponent } from './feature/cars/cars/notification/notification.component';
+import { OffersComponent } from './feature/cars/cars/offers/offers.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -26,22 +25,17 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { AlertModule } from './_alert';
+import { CarsModule } from './feature/cars/cars/cars.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent,
     NotFoundComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    MycarsComponent,
-    CarDetailsComponent,
-    CarEditComponent,
     AdminComponent,
-    NotificationComponent,
-    OffersComponent,
     ConfirmDialogComponent,
   ],
   imports: [
@@ -55,6 +49,7 @@ import { AlertModule } from './_alert';
     AuthModule,
     FormsModule,
     AlertModule,
+    CarsModule
   ],
   providers: [
     AuthService, 

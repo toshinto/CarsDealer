@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationListDto } from 'src/app/interfaces/NotificationListDto';
-import { CarService } from '../services/car.service';
+import { CarService } from '../../../../services/car.service';
 
 @Component({
   selector: 'app-notification',

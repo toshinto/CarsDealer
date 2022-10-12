@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationListDto } from 'src/app/interfaces/NotificationListDto';
 import { OfferListDto } from 'src/app/interfaces/OfferListDto';
-import { CarService } from '../services/car.service';
+import { CarService } from '../../../../services/car.service';
 
 @Component({
   selector: 'app-offers',
