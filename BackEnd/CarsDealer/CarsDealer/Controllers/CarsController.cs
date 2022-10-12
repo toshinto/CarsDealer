@@ -71,7 +71,7 @@ namespace CarsDealer.Controllers
 
             if (!isValdImageSize)
             {
-                apiError.ErrorMessage = "File must be below 1MB";
+                apiError.ErrorMessage = "File must be below 1MB.";
                 throw new Exception(apiError.ErrorMessage);
             }
 

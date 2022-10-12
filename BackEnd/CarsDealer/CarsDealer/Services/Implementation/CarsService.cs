@@ -312,7 +312,7 @@ namespace CarsDealer.Services.Implementation
 
             if (car.Brand != model.Brand || car.Model != model.Model || car.Color != model.Color || car.Description != model.Description || car.City != model.City)
             {
-                var message = $"Your car must be approved by Admin because you have changed car picture or details";
+                var message = $"Your car must be approved by Admin because you have changed car picture or details.";
 
                 _notificationService.AddNotification(car.UserId, message);
                 car.IsApproved = false;
@@ -403,7 +403,7 @@ namespace CarsDealer.Services.Implementation
 
             _imageService.CreateImages(fileBytes, model.ImageFileType, car.Id);
 
-            var message = $"Your car must be approved by Admin because you have changed car picture or details";
+            var message = $"Your car must be approved by Admin because you have changed car picture or details.";
 
             _notificationService.AddNotification(car.UserId, message);
 

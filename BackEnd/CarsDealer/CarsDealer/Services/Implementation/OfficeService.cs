@@ -34,7 +34,7 @@ namespace CarsDealer.Services.Implementation
             var receiverUserName = _userService.GetUserName(offer.ReceiverId);
 
             var message = $"{receiverUserName} accept your offer for {offer.Car.Brand} with model {offer.Car.Model} for {offer.Price}lv. on {DateTime.UtcNow}";
-            var messageTo = $"You accepted {senderUserName} offer so, your car {offer.Car.Brand} with model {offer.Car.Model} for {offer.Car.Price}lv. will be removed";
+            var messageTo = $"You accepted {senderUserName} offer so, your car {offer.Car.Brand} with model {offer.Car.Model} for {offer.Car.Price}lv. will be removed.";
 
             offer.Car.IsDeleted = true;
 
@@ -56,7 +56,7 @@ namespace CarsDealer.Services.Implementation
             var senderUserName = _userService.GetUserName(offer.SenderId);
             var receiverUserName = _userService.GetUserName(offer.ReceiverId);
 
-            var message = $"{receiverUserName} reject your offer for {offer.Car.Brand} with model {offer.Car.Model} for {offer.Price}lv. on {DateTime.UtcNow}";
+            var message = $"{receiverUserName} reject your offer for {offer.Car.Brand} with model {offer.Car.Model} for {offer.Price}lv. on {DateTime.UtcNow}.";
 
             _notificationService.AddNotification(offer.SenderId, message);
 
