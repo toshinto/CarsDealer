@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from '../../../../interfaces/car';
@@ -13,6 +13,9 @@ export class CarEditComponent implements OnInit {
   carForm: FormGroup;
   carId: number;
   car: Car;
+
+  @ViewChild('fileUploader') fileUploader: ElementRef;
+
   public formData = new FormData();
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private carService: CarService, private router: Router) {
@@ -65,8 +68,14 @@ export class CarEditComponent implements OnInit {
 
   updateCar(){
     this.formData.append('details', JSON.stringify(this.carForm.value));
-    this.carService.editCar(this.formData).subscribe(res => {
-      this.router.navigate(["myCars"]);
+    this.carService.editCar(this.formData).subscribe({
+      next: () => {
+        this.router.navigate(["myCars"]);
+      },
+      error: () => {
+        this.fileUploader.nativeElement.value = null;
+        this.formData.delete('file');
+      }
     })
   }
 }

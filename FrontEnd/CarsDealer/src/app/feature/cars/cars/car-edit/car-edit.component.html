@@ -109,11 +109,11 @@
         </ng-container>
         <div class="form-group">
           <label for="file">Choose File</label><br /> <input type="file" id="file"
-            (change)="uploadFiles($any($event.target).files)">
+            (change)="uploadFiles($any($event.target).files)" accept="image/*" #fileUploader>
         </div>
+        <alert></alert>
         <button type="submit" [disabled]="carForm.invalid" class="btn btn-primary" (click)="updateCar()">Update
           car</button>
-          <alert></alert>
       </form>
     </div>
     <div class="col-lg-4"></div>

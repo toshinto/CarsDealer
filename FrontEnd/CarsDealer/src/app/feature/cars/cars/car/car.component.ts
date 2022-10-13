@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink, TitleStrategy } from '@angular/router';
 import { Car } from 'src/app/interfaces/car';
@@ -13,6 +13,9 @@ export class CarComponent implements OnInit {
   public formData = new FormData();
   carForm: FormGroup;
   car: Car;
+ 
+  @ViewChild('fileUploader') fileUploader: ElementRef;
+
   constructor(private fb: FormBuilder, private carService: CarService, private router: Router) {
     this.carForm = this.fb.group({
       'Brand': ['', [Validators.required, Validators.pattern(/^[A-Z]+[a-zA-Z0-9]+/)]],
@@ -43,8 +46,14 @@ export class CarComponent implements OnInit {
 
   createCar(){
     this.formData.append('details', JSON.stringify(this.carForm.value));
-    this.carService.create(this.formData).subscribe(res => {
-      this.router.navigate(['notifications']);
+    this.carService.create(this.formData).subscribe({
+      next: () => {
+        this.router.navigate(['notifications']);
+      },
+      error: (err) => {
+        this.fileUploader.nativeElement.value = null;
+        this.formData.delete('file');
+      }
     })
   }
 
