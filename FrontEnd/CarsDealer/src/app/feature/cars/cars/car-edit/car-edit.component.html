@@ -99,7 +99,7 @@
           <p *ngIf="carForm.controls['HorsePower'].errors?.['max']" class="error">HorsePower can be max 1000 HP.</p>
         </ng-container>
         <div>
-          <label for="kilometeres">Kilometeres  <span class="star">*</span></label>
+          <label for="kilometeres">Mileage  <span class="star">*</span></label>
           <input type="number" class="form-control" formControlName="Kilometeres">
         </div>
         <ng-container *ngIf="carForm.controls['Kilometeres'].touched && carForm.controls['Kilometeres'].invalid">
