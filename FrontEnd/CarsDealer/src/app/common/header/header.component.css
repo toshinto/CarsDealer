@@ -1,6 +1,7 @@
 header {
     background: rgb(0, 128, 182);
-    background: linear-gradient(0deg, rgba(0, 128, 182, 1) 0%, rgba(0, 128, 182, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    /* background: linear-gradient(0deg, rgba(0, 128, 182, 1) 0%, rgba(0, 128, 182, 1) 35%, rgba(0, 212, 255, 1) 100%); */
+    background: linear-gradient(0deg, rgba(0, 212, 255, 1) 0%, rgba(0, 156, 193,1) 35%, rgba(0, 105, 137, 1) 100%);
   }
   
   header ul {
