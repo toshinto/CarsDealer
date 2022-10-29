@@ -1,8 +1,18 @@
 form {
-    border: 1px solid grey;
+    border: 1px solid #0080b6;
     padding: 10% 15%;
-    margin-top: 20%;
+    margin-top: 10%;
+    margin-bottom: 20%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
+
+.form-control{
+    box-shadow: 5px 5px 10px;
+}
+
 
 .error{
     color:red;

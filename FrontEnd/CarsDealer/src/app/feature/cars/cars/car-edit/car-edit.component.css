@@ -1,12 +1,57 @@
 form {
-    border: 1px solid grey;
+    border: 1px solid #0080b6;
     padding: 10% 15%;
-    margin-top: 20%;
+    margin-top: 10%;
     margin-bottom: 20%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 .star{
     color:red;
 }
 .error{
     color:red;
+}
+
+.form-control{
+    box-shadow: 5px 5px 10px;
+}
+
+label{
+    margin-top: 10px;
+}
+
+#file{
+    max-width: 100%;
+    box-shadow: 5px 5px 10px;
+}
+
+.fuel{
+    background-color: white;
+    box-shadow: 5px 5px 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+.gearLever{
+    background-color: white;
+    box-shadow: 5px 5px 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.middle{
+    border: 1px solid darkkhaki;
+    margin-top: 30px;
+    text-align: center;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
