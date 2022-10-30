@@ -1,5 +1,5 @@
 form {
-    border: 1px solid #0080b6;
+    border: 1px solid #0084a7;
     padding: 10% 15%;
     margin-top: 20%;
     margin-bottom: 20%;
@@ -44,5 +44,9 @@ label{
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.btn{
+    background-color: #0084a7;
 }
 

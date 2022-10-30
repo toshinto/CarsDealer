@@ -1,5 +1,5 @@
 form {
-    border: 1px solid #0080b6;
+    border: 1px solid #0084a7;
     padding: 10% 15%;
     margin-top: 10%;
     margin-bottom: 20%;
@@ -20,4 +20,8 @@ form {
 
 .star{
     color:red;
+}
+
+.btn{
+    background-color: #0084a7;
 }
