@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <form>
     Search <input [formControl]="searchControl" type="text" placeholder="Search by brand or model"/>
   </form>
@@ -16,4 +16,35 @@
   <div class="card-footer pb-0 pt-3">
     <jw-pagination [items]="cars" [pageSize]="12" (changePage)="onChangePage($event)"></jw-pagination>
   </div>
-</div>
+</div> -->
+
+<body>
+  <main>
+    <form>
+      <input [formControl]="searchControl" class="search" type="text" placeholder="Search by brand or model" />
+    </form>
+    <article class="cars">
+    <article class="car" style="width: 18rem;" *ngFor="let car of pageOfItems">
+      <article class="img-wrapper">
+        <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+      </article>
+      <article class="brand-model">
+        <h4>{{car.Brand}} {{car.Model}}</h4>
+      </article>
+      <article class="year">
+        <p>{{car.Year}} y</p>
+      </article>
+      <article class="content">
+        <p>{{car.Description}}</p>
+        <p class="price">${{car.Price}}</p>
+      </article>
+      <article class="more-details">
+        <a routerLink="/cars/{{car.Id}}" class="btn btn-primary">More Details</a>
+      </article>
+    </article>
+    </article>
+    <article class="card-footer">
+      <jw-pagination [items]="cars" [pageSize]="12" (changePage)="onChangePage($event)"></jw-pagination>
+    </article>
+  </main>
+</body>
