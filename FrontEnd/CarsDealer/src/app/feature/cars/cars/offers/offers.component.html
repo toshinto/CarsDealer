@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="card" style="width: 18rem;" *ngFor="let offers of offers">
           <div class="card-body">
@@ -8,4 +8,21 @@
           <button class="btn btn-danger" (click)="declineOffer(offers.Id)">Decline</button>
         </div>
     </div>
-  </div>
+  </div> -->
+
+
+  <body>
+    <main>
+      <article class="offers">
+        <article class="offer" *ngFor="let offers of offers">
+          <article class="content">
+            <p class="message">{{offers.Message}}</p>
+            <article class="buttons">
+              <button class="decline" (click)="declineOffer(offers.Id)">Decline</button>
+              <button class="approve" (click)="acceptOffer(offers.Id)">Accept</button>
+            </article>
+          </article>
+        </article>
+      </article>
+    </main>
+  </body>

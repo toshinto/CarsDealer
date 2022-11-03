@@ -1,0 +1,49 @@
+
+.content{
+    border: solid 1px #0099be;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.approve{
+    width: 100px;
+    height: 25px;
+    background-color: #0099be;
+    color: white;
+    border: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 40px;
+}
+
+.decline{
+    background: none;
+    width: 100px;
+    height: 25px;
+    color: #0099be;
+    margin-left: 20px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+}
