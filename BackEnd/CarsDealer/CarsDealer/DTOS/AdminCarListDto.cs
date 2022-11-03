@@ -10,5 +10,8 @@ namespace CarsDealer.DTOS
         public string ImageFileType { get; set; }
         public string ImageBase64 { get; set; }
         public DateTime CreatedOn { get; set; }
+        public string Description { get; set; }
+        public string Color { get; set; }
+        public string City { get; set; }
     }
 }

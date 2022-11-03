@@ -37,6 +37,9 @@ namespace CarsDealer.Services.Implementation
                     Model = x.Model,
                     ImageFileType = x.ImageFileType,
                     CreatedOn = x.CreatedOn,
+                    Description = x.Description,
+                    City = x.City,
+                    Color = x.Color,
 
                 })
                 .OrderBy(x => x.CreatedOn)
