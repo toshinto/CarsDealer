@@ -14,7 +14,6 @@ img{
 }
 .cars{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 .car{
@@ -68,4 +67,6 @@ img{
 .card-footer{
     background-color: white;
     margin-left: 450px;
+    border-top: none;
+
 }

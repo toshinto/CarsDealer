@@ -14,7 +14,6 @@ background: none;
 
 .cars{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 .car{
@@ -81,6 +80,7 @@ form{
 .card-footer{
     background-color: white;
     margin-left: 450px;
+    border-top: none;
 }
 
 .pagination {
