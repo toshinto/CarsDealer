@@ -1,5 +1,71 @@
+.trash{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -10px;
+}
 img{
+    max-width: 95%;
+    margin: auto;
+    display: block;
+    margin-top: 10px;
     width: 300px;
     height: 200px;
-    max-width: 100%;
+}
+.cars{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.car{
+    /* border: solid 1px #0084a7; */
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 1px;
+    box-shadow: 2px 2px 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+}
+
+.more-details{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn{
+    margin-right: 20px;
+    margin-bottom: 10px;
+    background-color: #0099be;
+    color:white;
+    border: none;
+    width: 50px;
+    height: 20px;
+    display: inline-flex;
+  align-items: center; 
+}
+
+.brand-model{
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.details{
+    margin-left: 10px;
+    color: #0099be;
+    margin-top: 10px;
+}
+
+.btn:hover{
+    background-color: #0099be;
+    color:white;
+}
+
+.card-footer{
+    background-color: white;
+    margin-left: 450px;
 }

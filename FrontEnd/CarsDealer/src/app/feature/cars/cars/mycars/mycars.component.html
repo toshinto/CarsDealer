@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="card" style="width: 18rem;" *ngFor="let car of pageOfItems">
           <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
@@ -12,4 +12,28 @@
       </div>
     </div>
   <jw-pagination [items]="cars" [pageSize]="12" (changePage)="onChangePage($event)"></jw-pagination>
-  </div>
+  </div> -->
+
+  <body>
+    <main>
+      <article class="cars">
+      <article class="car" style="width: 18rem;" *ngFor="let car of pageOfItems">
+        <article class="img-wrapper">
+          <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+        </article>
+        <article class="brand-model">
+          <h4>{{car.Brand}} {{car.Model}}</h4>
+        </article>
+        <article class="more-details">
+          <a routerLink="/cars/{{car.Id}}" class="details">More Details</a>
+          <img src="../../../../../assets/pictures/icons8-trash-24.png" class="trash" (click)="confirmDialog(car.Id)">
+          <button class="btn btn-warning" (click)="editCar(car.Id)">Edit</button>
+          <!-- <button class="btn btn-danger" (click)="confirmDialog(car.Id)">Delete</button> -->
+        </article>
+      </article>
+      </article>
+      <article class="card-footer">
+        <jw-pagination [items]="cars" [pageSize]="12" (changePage)="onChangePage($event)"></jw-pagination>
+      </article>
+    </main>
+  </body>

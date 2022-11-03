@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Car } from '../../interfaces/car';
 import { CarService } from '../../services/car.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator'; 
