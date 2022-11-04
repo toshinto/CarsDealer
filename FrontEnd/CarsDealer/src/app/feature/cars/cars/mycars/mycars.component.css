@@ -11,6 +11,7 @@ img{
     margin-top: 10px;
     width: 300px;
     height: 200px;
+    cursor: pointer;
 }
 .cars{
     display: flex;

@@ -39,6 +39,7 @@ img{
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
+    cursor: pointer;
 }
 
 .approve{
@@ -52,6 +53,7 @@ img{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     margin-right: 40px;
+    cursor: pointer;
 }
 
 .location{
