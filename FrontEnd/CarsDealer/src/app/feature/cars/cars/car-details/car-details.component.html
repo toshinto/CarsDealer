@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <alert></alert>
      <ng-container *ngIf="car">
         <div class="row">
@@ -31,4 +31,70 @@
             <button type="submit" [disabled]="offer" class="btn btn-primary" (click)="makeOffer()">Make offer</button>
         </form>
      </ng-container>
+</div> -->
+
+<div class="container">
+    <ng-container *ngIf="car">
+        <div class="wrapper">
+            <div class="col-lg-6">
+                <img [src]="'data:image/jpg;base64,' + car.ImageBase64" class="card-img-top" alt="...">
+            </div>
+            <div class="details">
+                <div class="infoWrapper">
+                    <h3>{{car.Brand}} {{car.Model}}</h3>
+                    <p>{{car.Year}}</p>
+                    <p>Don't miss it! Send offer now</p>
+                    <div class="description">
+                        <img src="../../../../../assets/pictures/icons8-info-popup-24.png" class="info">
+                        <p class="des">{{car.Description}}</p>
+                    </div>
+                    <div class="city">
+                        <img src="../../../../../assets/pictures/icons8-location-24.png" class="town">
+                        <p class="cy">{{car.City}}</p>
+                    </div>
+                    <div class="fuel">
+                        <img src="../../../../../assets/pictures/icons8-gas-station-24.png" class="fuelType">
+                        <p class="fu">{{car.Fuel}}</p>
+                    </div>
+                    <div class="gearBox">
+                        <img src="../../../../../assets/pictures/icons8-gearbox-24.png" class="gearLever">
+                        <p class="gb">{{car.GearLever}}</p>
+                    </div>
+                    <div class="price">
+                        <img src="../../../../../assets/pictures/icons8-euro-money-24.png" class="money">
+                        <p class="pr">{{car.Price}}$</p>
+                    </div>
+                    <div class="color">
+                        <img src="../../../../../assets/pictures/icons8-paint-palette-24.png" class="colour">
+                        <p class="cr">{{car.Color}}</p>
+                    </div>
+                    <div class="hp">
+                        <img src="../../../../../assets/pictures/icons8-trojan-horse-24.png" class="horsePower">
+                        <p class="hop">{{car.HorsePower}}</p>
+                    </div>
+                    <div class="mileage">
+                        <img src="../../../../../assets/pictures/icons8-speed-24.png" class="km">
+                        <p class="m">{{car.Kilometeres}}</p>
+                    </div>
+                </div>
+                <div class="sendOffer">
+                    <div class="oferrBox">
+                        <input type="checkbox" class="offer" id="offer" name="offer" value="Bike" (click)="isClicked()">
+                        <p class="sendText">Send an offer</p>
+                    </div>
+                    <form [formGroup]="offerForm" *ngIf="isOfferShown">
+                        <div>
+                            <label for="price" class="offerPrice">Price</label>
+                            <input type="number" class="form-control" formControlName="Price">
+                        </div>
+                        <ng-container *ngIf="offerForm.controls['Price'].touched && offerForm.controls['Price'].invalid">
+                            <p *ngIf="offerForm.controls['Price'].errors?.['min']" class="error">Price must be positive number.</p>
+                        </ng-container>
+                        <button type="submit" [disabled]="offer" class="button" (click)="makeOffer()">Make offer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+       <alert></alert>
+    </ng-container>
 </div>

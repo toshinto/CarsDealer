@@ -27,6 +27,7 @@ import { AuthModule } from './auth/auth.module';
 import { AlertModule } from './feature/_alert';
 import { CarsModule } from './feature/cars/cars/cars.module';
 import { AdminModule } from './feature/admin/admin.module';
+import { ShortenPipe } from './pipes/shorten.pipe';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AdminModule } from './feature/admin/admin.module';
     FooterComponent,
     HomeComponent,
     ConfirmDialogComponent,
+    ShortenPipe,
   ],
   imports: [
     BrowserModule,

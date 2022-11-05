@@ -35,7 +35,7 @@
         <p>{{car.Year}} y</p>
       </article>
       <article class="content">
-        <p>{{car.Description}}</p>
+        <p>{{car.Description | shorten:10}}</p>
         <p class="price">${{car.Price}}</p>
       </article>
       <article class="more-details">
