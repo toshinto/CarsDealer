@@ -197,7 +197,7 @@ namespace CarsDealer.Services.Implementation
                     Brand = y.Brand,
                     Model = y.Model,
                     Description = y.Description,
-                    Fuel = y.Fuel.ToString(),
+                    Fuel = y.Fuel.ConvertFuel(),
                     GearLever = y.GearLever.ToString(),
                     Price = y.Price,
                     Year = y.Year,
