@@ -16,3 +16,7 @@ form {
 .btn{
     background-color: #0084a7;
 }
+
+.error{
+    color:red;
+}
