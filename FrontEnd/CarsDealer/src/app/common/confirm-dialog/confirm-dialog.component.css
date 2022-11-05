@@ -1,0 +1,33 @@
+.accept{
+    width: 100px;
+    height: 25px;
+    background-color: #0099be;
+    color: white;
+    border: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.cancel{
+    background: none;
+    width: 100px;
+    height: 25px;
+    color: #0099be;
+    margin-left: 20px;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    border: none;
+}
+.title{
+    text-align: center;
+}
+
+.message{
+    text-align: center;
+}
