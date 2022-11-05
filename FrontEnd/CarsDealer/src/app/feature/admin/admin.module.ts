@@ -9,6 +9,7 @@ import { ShortenPipe } from 'src/app/pipes/shorten.pipe';
 @NgModule({
   declarations: [
     AdminComponent,
+    ShortenPipe
   ],
   imports: [
     CommonModule,

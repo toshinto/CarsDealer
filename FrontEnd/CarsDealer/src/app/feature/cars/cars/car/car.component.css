@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+
 form {
     border: 1px solid #0084a7;
     padding: 10% 15%;
@@ -48,5 +50,7 @@ label{
 
 .btn{
     background-color: #0084a7;
+    font-family: 'Roboto';
+
 }
 

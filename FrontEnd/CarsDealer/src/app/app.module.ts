@@ -38,7 +38,6 @@ import { ShortenPipe } from './pipes/shorten.pipe';
     FooterComponent,
     HomeComponent,
     ConfirmDialogComponent,
-    ShortenPipe,
   ],
   imports: [
     BrowserModule,

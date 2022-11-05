@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 
 .content{
     border: solid 1px #0099be;
@@ -36,6 +37,9 @@
     border-bottom-right-radius: 20px;
     margin-right: 40px;
     cursor: pointer;
+    font-family: 'Roboto';
+
+
 }
 
 .decline{
@@ -48,5 +52,6 @@
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
+    font-family: 'Roboto';
 
 }

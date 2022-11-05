@@ -32,14 +32,13 @@
         <h4>{{car.Brand}} {{car.Model}}</h4>
       </article>
       <article class="year">
-        <p>{{car.Year}} y</p>
       </article>
       <article class="content">
-        <p>{{car.Description | shorten:10}}</p>
+        <p class="year">{{car.Year}}y</p>
         <p class="price">${{car.Price}}</p>
       </article>
       <article class="more-details">
-        <a routerLink="/cars/{{car.Id}}" class="btn btn-primary">More Details</a>
+        <a routerLink="/cars/{{car.Id}}" class="details">More Details</a>
       </article>
     </article>
     </article>

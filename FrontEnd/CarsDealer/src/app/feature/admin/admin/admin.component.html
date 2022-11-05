@@ -23,7 +23,7 @@
           <h4>{{car.Brand}} {{car.Model}}</h4>
         </article>
         <article class="description">
-            <p>{{car.Description | slice:0:30}}...</p>
+            <p>{{car.Description | shorten:30}}</p>
         </article>
         <article class="location">
             <img src="../../../../assets/pictures/icons8-location-24.png" class="loc">

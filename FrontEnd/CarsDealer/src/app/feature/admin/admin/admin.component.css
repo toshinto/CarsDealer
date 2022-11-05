@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:ital,wght@1,100&display=swap');
+
 img{
     max-width: 95%;
     margin: auto;
@@ -40,6 +42,7 @@ img{
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
+    font-family: 'Roboto';
 }
 
 .approve{
@@ -54,6 +57,7 @@ img{
     border-bottom-right-radius: 20px;
     margin-right: 40px;
     cursor: pointer;
+    font-family: 'Roboto';
 }
 
 .location{
@@ -73,11 +77,13 @@ img{
     margin-top: 10px;
     margin-left: 20px;
     font-weight: bold;
+    font-family: 'Playfair Display';
 }
 
 .description{
     margin-top: 20px;
     margin-left: 20px;
+    
 }
 
 .city{

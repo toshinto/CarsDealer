@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:ital,wght@1,100&display=swap');
+
 .trash{
     width: 20px;
     height: 20px;
@@ -47,17 +49,24 @@ img{
     height: 20px;
     display: inline-flex;
   align-items: center; 
+  font-family: roboto-medium;
+
 }
 
 .brand-model{
     margin-left: 10px;
     font-weight: bold;
+    font-family: 'Playfair Display';
+
 }
 
 .details{
     margin-left: 10px;
     color: #0099be;
     margin-top: 10px;
+    margin-left: 15px;
+    font-family: 'Roboto';
+
 }
 
 .btn:hover{
