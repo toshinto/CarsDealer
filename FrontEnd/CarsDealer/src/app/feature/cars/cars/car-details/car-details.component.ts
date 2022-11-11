@@ -20,6 +20,7 @@ export class CarDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private carService: CarService, private fb: FormBuilder, private alertService: AlertService) {
     this.route.params.pipe(map(params =>{
       const id = params['id'];
+      this.id = id;
       return id
     }), mergeMap(id => this.carService.getCar(id))).subscribe(res => {
       this.car = res;
