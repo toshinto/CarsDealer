@@ -84,7 +84,7 @@ form{
     border-top: none;
 }
 
-.pagination {
+.pagination .number-item {
     background-color: #0099be;
     color: #0099be;
 }

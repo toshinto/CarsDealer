@@ -35,7 +35,6 @@ export class CarComponent implements OnInit {
    }
 
    uploadFiles(file: any) {
-    console.log('file', file)
     for (let i = 0; i < file.length; i++) {
       this.formData.append("file", file[i], file[i]['name']); 
     }

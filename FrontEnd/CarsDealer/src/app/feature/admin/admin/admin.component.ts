@@ -25,7 +25,6 @@ export class AdminComponent implements OnInit {
   Disapprove(id: number){
     this.carService.disApproveCar(id).subscribe(data => {
       this.isApproved = data.State as boolean;
-      console.log(data.State);
     });
   }
   

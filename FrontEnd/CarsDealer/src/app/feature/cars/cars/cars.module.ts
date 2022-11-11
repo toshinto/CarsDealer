@@ -8,7 +8,7 @@ import { OffersComponent } from 'src/app/feature/cars/cars/offers/offers.compone
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'src/app/feature/_alert';
 import { CarRoutingModule } from './cars-routing.module';
-import { JwPaginationModule } from 'jw-angular-pagination';
+import { JwPaginationComponent, JwPaginationModule } from 'jw-angular-pagination';
 import { CarDetailsComponent } from './car-details/car-details.component';
 
 
@@ -20,7 +20,7 @@ import { CarDetailsComponent } from './car-details/car-details.component';
     CarEditComponent,
     NotificationComponent,
     OffersComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
   ],
   imports: [
     CommonModule,
