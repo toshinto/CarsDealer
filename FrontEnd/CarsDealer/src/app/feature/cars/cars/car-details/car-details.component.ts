@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/interfaces/car';
 import { CarService } from 'src/app/services/car.service';
 import { AlertService } from 'src/app/feature/_alert';
+import { map, mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-car-details',
@@ -17,21 +18,20 @@ export class CarDetailsComponent implements OnInit {
   offer: boolean = false;
   isOfferShown: boolean = false;
   constructor(private route: ActivatedRoute, private carService: CarService, private fb: FormBuilder, private alertService: AlertService) {
-    this.route.params.subscribe(res => {
-      this.id = res['id'];
-      this.carService.getCar(this.id).subscribe(res => {
-        this.car = res;
-        this.offerForm = this.fb.group({
-          'Id': [this.id],
-          'Price': ['', [Validators.min(1)]],
-        })
-      });
-      
+    this.route.params.pipe(map(params =>{
+      const id = params['id'];
+      return id
+    }), mergeMap(id => this.carService.getCar(id))).subscribe(res => {
+      this.car = res;
+      this.offerForm = this.fb.group({
+              'Id': [this.id],
+              'Price': ['', [Validators.min(1)]],
+            })
     })
    }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
   }
 
   makeOffer(){
