@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CarComponent } from 'src/app/feature/cars/cars/car/car.component';
+import { CarComponent } from 'src/app/feature/cars/cars/car-create/car.component';
 import { MycarsComponent } from 'src/app/feature/cars/cars/mycars/mycars.component';
 import { CarEditComponent } from 'src/app/feature/cars/cars/car-edit/car-edit.component';
 import { NotificationComponent } from 'src/app/feature/cars/cars/notification/notification.component';
