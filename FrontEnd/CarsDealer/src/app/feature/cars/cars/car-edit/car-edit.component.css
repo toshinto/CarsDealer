@@ -61,3 +61,7 @@ label{
     background-color: #0084a7;
     font-family: 'Roboto';
 }
+
+#file{
+    width: 300px;
+}
