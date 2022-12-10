@@ -10,7 +10,7 @@ img{
 }
 .cars{
     display: flex;
-    height: 450px;
+    height: 430px;
     flex-wrap: wrap;
 }
 .car{
